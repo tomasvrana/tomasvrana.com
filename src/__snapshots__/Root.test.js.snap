@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root it renders correctly 1`] = `
+<Root
+  element={
+    <p>
+      Element
+    </p>
+  }
+>
+  <AdminRedirector />
+  <p>
+    Element
+  </p>
+</Root>
+`;

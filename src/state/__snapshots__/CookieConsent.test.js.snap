@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CookieConsent allowing cookies it renders correctly 1`] = `
+<Provider>
+  <div>
+    <button
+      onClick={[Function]}
+    />
+    <p>
+      Cookies allowed
+    </p>
+  </div>
+</Provider>
+`;
+
+exports[`CookieConsent disallowing cookies it renders correctly 1`] = `
+<Provider>
+  <div>
+    <button
+      onClick={[Function]}
+    />
+  </div>
+</Provider>
+`;
+
+exports[`CookieConsent the Provider renders correctly 1`] = `
+<Provider>
+  <p>
+    Children
+  </p>
+</Provider>
+`;
+
+exports[`CookieConsent when the allowCookies value in local storage is true it renders correctly 1`] = `
+<Provider>
+  <div>
+    <p>
+      Cookies allowed via local storage
+    </p>
+  </div>
+</Provider>
+`;

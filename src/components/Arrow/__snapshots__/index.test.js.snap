@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Arrow /> it renders a "down" arrow correctly 1`] = `
+<styled.div
+  rotation={90}
+>
+  <IoMdPlay />
+</styled.div>
+`;
+
+exports[`<Arrow /> it renders a "filled" arrow correctly 1`] = `
+<styled.div
+  rotation={90}
+  shouldFill={true}
+>
+  <IoMdPlay />
+</styled.div>
+`;
+
+exports[`<Arrow /> it renders a "left" arrow correctly 1`] = `
+<styled.div
+  rotation={180}
+>
+  <IoMdPlay />
+</styled.div>
+`;
+
+exports[`<Arrow /> it renders a "right" arrow correctly 1`] = `
+<styled.div
+  rotation={0}
+>
+  <IoMdPlay />
+</styled.div>
+`;
+
+exports[`<Arrow /> it renders an "up" arrow correctly 1`] = `
+<styled.div
+  rotation={270}
+>
+  <IoMdPlay />
+</styled.div>
+`;
+
+exports[`<Arrow /> it renders correctly with no props 1`] = `
+<styled.div
+  rotation={90}
+>
+  <IoMdPlay />
+</styled.div>
+`;

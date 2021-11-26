@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> it renders a primary button correctly 1`] = `
+<styled.span
+  className="text-transform-uppercase"
+>
+  <Link
+    className=""
+    href="#"
+    onClick={[MockFunction]}
+    secondary={false}
+    target="_blank"
+    title="Primary"
+    tracking={Object {}}
+    useLang={true}
+  >
+    I'm a button
+  </Link>
+</styled.span>
+`;
+
+exports[`<Button /> it renders a secondary button correctly 1`] = `
+<styled.span
+  className="text-transform-uppercase"
+>
+  <Link
+    className="secondary"
+    href="#"
+    onClick={[MockFunction]}
+    secondary={true}
+    target="_blank"
+    title="Secondary"
+    tracking={Object {}}
+    useLang={true}
+  >
+    I'm a button
+  </Link>
+</styled.span>
+`;

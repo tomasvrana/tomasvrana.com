@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App it renders correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "allowCookies": false,
+      "setAllowCookies": [Function],
+    }
+  }
+>
+  <Provider>
+    <mockConstructor>
+      <Component />
+    </mockConstructor>
+  </Provider>
+</ContextProvider>
+`;
+
+exports[`App it renders correctly 2`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "example": "theme",
+    }
+  }
+>
+  <GlobalStyleComponent />
+  <Provider>
+    <Provider>
+      <_default />
+      <PickerContainer />
+      <_default />
+      <p>
+        Element
+      </p>
+      <Footer />
+    </Provider>
+  </Provider>
+</ThemeProvider>
+`;

@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Language the Provider renders correctly 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      en
+    </p>
+    <p
+      key="current-locale"
+    >
+      en_GB
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;
+
+exports[`Language when the language is in the URL when the language is not supported it renders with the first supported language ('en') 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      en
+    </p>
+    <p
+      key="current-locale"
+    >
+      en_GB
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;
+
+exports[`Language when the language is in the URL when the language is supported it renders with the 'fr' language 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      fr
+    </p>
+    <p
+      key="current-locale"
+    >
+      fr_FR
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;
+
+exports[`Language when the language is set in local storage when the language is not supported it renders with the first supported language ('en') 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      en
+    </p>
+    <p
+      key="current-locale"
+    >
+      en_GB
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;
+
+exports[`Language when the language is set in local storage when the language is supported it renders with the 'fr' language 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      fr
+    </p>
+    <p
+      key="current-locale"
+    >
+      fr_FR
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;
+
+exports[`Language when there is a language in the navigator when the language is not supported it renders with the first supported language ('en') 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      en
+    </p>
+    <p
+      key="current-locale"
+    >
+      en_GB
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;
+
+exports[`Language when there is a language in the navigator when the language is supported it renders with the 'fr' language 1`] = `
+<Provider>
+  <div>
+    <p
+      key="current-lang"
+    >
+      fr
+    </p>
+    <p
+      key="current-locale"
+    >
+      fr_FR
+    </p>
+    <ul
+      key="available-locales"
+    >
+      <li
+        key="en_GB"
+      >
+        en_GB
+      </li>
+      <li
+        key="ja_JA"
+      >
+        ja_JA
+      </li>
+      <li
+        key="fr_FR"
+      >
+        fr_FR
+      </li>
+    </ul>
+  </div>
+</Provider>
+`;

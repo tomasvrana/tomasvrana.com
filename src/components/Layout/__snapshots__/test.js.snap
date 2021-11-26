@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Layout /> it renders correctly when head data is provided 1`] = `
+<Fragment>
+  <Layout
+    title="Testing"
+  />
+  <LoadingMask
+    pageLoading={true}
+  >
+    <p>
+      Some content
+    </p>
+  </LoadingMask>
+</Fragment>
+`;
+
+exports[`<Layout /> when page is loading it renders correctly 1`] = `
+<Fragment>
+  <Layout />
+  <LoadingMask
+    pageLoading={true}
+  >
+    <p>
+      Some content
+    </p>
+  </LoadingMask>
+</Fragment>
+`;
+
+exports[`<Layout /> when page is not loading it renders correctly 1`] = `
+<Fragment>
+  <Layout />
+  <LoadingMask
+    pageLoading={false}
+  >
+    <p>
+      Some content
+    </p>
+  </LoadingMask>
+</Fragment>
+`;

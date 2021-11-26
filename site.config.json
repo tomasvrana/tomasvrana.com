@@ -1,0 +1,6 @@
+{
+  "availableLanguages": {
+    "en": { "label": "English", "flag": "🇺🇸", "locale": "en_US" },
+    "cz": { "label": "Česky", "flag": "🇯🇵", "locale": "cs_CZ" }
+  }
+}
