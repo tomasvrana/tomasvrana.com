@@ -17,7 +17,8 @@ const Logo = styled.div`
   font-size:.7em;
   font-weight:800;
   padding:.7em 1.1em;
-  display:inline-block
+  display:inline-block;
+  filter: blur(2px);
 
 `
 
