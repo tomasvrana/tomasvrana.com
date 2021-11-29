@@ -20,8 +20,7 @@ const BlockContainer = styled.div`
   }
 
   @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
-    top: 1rem;
-    padding-left: 1rem;
+    top: .5rem;
     box-sizing: border-box;
   }
 `

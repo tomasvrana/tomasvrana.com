@@ -20,7 +20,8 @@ const Query = ({ render }) => (
                       media
                       type
                       year
-                      image
+                      parent
+                      back
                       location
                       images {
                         src

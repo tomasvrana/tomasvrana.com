@@ -2,7 +2,13 @@
 title: En (English) home page content
 content:
   title: INFORMACE
-  desc: fsdjskh fdksl
+  href: /information/
+  desc: |
+    TV se ve své tvorbě točí kolem experimentů s kontextem. Prolíná v sebe i protichůdné cesty a jako laborant testuje životnost i základních prvků, jako je oči nebo strop. No a pak se to nabarví. Nepopiratelný je původ grafického designéra, ale i vliv mistrů jako David Hockney, Mark Rothko či Francis Bacon.
+        
+  member: |
+    TV je členem výtvarného kolektivu galerie Gottfrei v Opavě.
+    
   contact: "E-mail: tom@vrana.org"
   experience:
     title: Zkušenost

@@ -2,7 +2,7 @@
 # Netlify identifier
 title: En (English) home page meta data
 head:
-  title: TV INSTALLING - TOMAS VRANA
+  title: SPACES - TOMAS VRANA
   meta:
-    - { name: "description", content: "INSTALLING - TOMAS VRANA", file: "" }
+    - { name: "description", content: "SPACES - TOMAS VRANA", file: "" }
 ---

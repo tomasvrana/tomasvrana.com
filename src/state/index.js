@@ -18,6 +18,10 @@ import {
   Consumer as ThemeConsumer,
   Provider as ThemeProvider
 } from './Theme'
+import {
+  Consumer as NavActiveConsumer,
+  Provider as NavActiveProvider
+} from './NavActive'
 
 export {
   CookieConsentConsumer,
@@ -29,5 +33,7 @@ export {
   PageLoaderConsumer,
   PageLoaderProvider,
   ThemeConsumer,
-  ThemeProvider
+  ThemeProvider,
+  NavActiveConsumer,
+  NavActiveProvider
 }

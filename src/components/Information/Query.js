@@ -17,6 +17,7 @@ const Query = ({ render }) => (
                     content {
                       title
                       desc
+                      member
                       contact
                       experience {
                         title

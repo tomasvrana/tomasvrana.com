@@ -2,6 +2,7 @@
 title: En (English) home page content
 content:
   title: INFORMATION
+  href: /information/
   desc: fsdjskh fdksl
   contact: "E-mail: tom@vrana.org"
   experience:

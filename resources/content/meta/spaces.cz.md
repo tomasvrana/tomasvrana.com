@@ -2,7 +2,7 @@
 # Netlify identifier
 title: En (English) home page meta data
 head:
-  title: TV INSTALUJE - TOMÁŠ VRÁNA
+  title: PROSTOR - TOMÁŠ VRÁNA
   meta:
-    - { name: "description", content: "TV INSTALUJE - TOMÁŠ VRÁNA", file: "" }
+    - { name: "description", content: "PROSTOR - TOMÁŠ VRÁNA", file: "" }
 ---

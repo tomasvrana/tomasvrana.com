@@ -4,8 +4,8 @@ select_language: Select language
 content:
   title: TV
   navigation:
-    - title: Graphics
-      href: /graphics/
+    - title: Images
+      href: /images/
     - title: Spaces
       href: /spaces/
     - title: Information

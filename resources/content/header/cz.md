@@ -4,8 +4,8 @@ select_language: Select language
 content:
   title: TV
   navigation:
-    - title: Grafika
-      href: /graphics/
+    - title: Obrazy
+      href: /images/
     - title: Prostor
       href: /spaces/
     - title: Informace

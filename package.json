@@ -26,6 +26,8 @@
     "react-ga": "^2.5.7",
     "react-helmet": "6.0.0-beta",
     "react-icons": "^3.7.0",
+    "react-markdown": "^7.1.0",
+    "react-noisy-canvas": "^1.0.4",
     "react-responsive": "^6.0.1",
     "react-responsive-carousel": "^3.2.22",
     "react-typography": "^0.16.13",
