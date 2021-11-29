@@ -5,34 +5,34 @@ content:
   more: Vidět více
   href: /spaces/
   projects:
-    - title: Kolos of Ostrava
-      href: /kolos-of-ostrava/
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-      image: /images/kolos/1.jpg
-      year: 2019
     - title: Konevmen
       href: /konevmen/
-      description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+      description: 
       image: /images/konevmen/1.jpg
       year: 2020
+    - title: Kolos of Ostrava
+      href: /kolos-of-ostrava/
+      description: 
+      image: /images/kolos/1.jpg
+      year: 2019
     - title: Turistická atrakce
       href: /attraction/
-      description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+      description: 
       image: /images/attraction/1.jpg
       year: 2020
     - title: Duhovka
       href: /rainbowball/
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      description: 
       image: /images/duhovka/1.jpg
       year: 2011
     - title: Vyslán islám
       href: /islam/
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      description: 
       image: /images/islam/1.jpg
       year: 2011
     - title: Kostka
       href: /cube/
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      description: 
       image: /images/kostka/1.jpg
       year: 2011
 ---

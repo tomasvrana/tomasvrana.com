@@ -25,25 +25,6 @@ const Ul = styled.ul`
       margin:0 auto 2.5rem auto;
       color:#666;
     }
-    img {
-    }
-    .more{
-      display:inline-block;
-      opacity:.7;
-      padding:1rem 0 1.5rem 0;
-      text-transform:uppercase;
-      font-weight:bold;
-      font-size:76%;
-      letter-spacing:.5rem;
-      border-bottom:.2rem solid #fff;
-      &:hover{
-        border-bottom:.2rem solid #000;
-        opacity:1;
-      }
-      span {
-        font-size:130%;
-      }
-    }
   }
 
 `

@@ -12,4 +12,7 @@ content:
   images:
     - src: /images/kolos/1.jpg
     - src: /images/kolos/2.jpg
+    - src: /images/kolos/3.jpg
+    - src: /images/kolos/4.jpg
+    - src: /images/kolos/5.jpg
 ---

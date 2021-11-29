@@ -11,8 +11,8 @@ const Container = styled.div`
     padding:1rem 0 1.5rem 0;
     text-transform:uppercase;
     font-weight:bold;
-    font-size:76%;
-    letter-spacing:.5rem;
+    font-size:65%;
+    letter-spacing:.4rem;
     border-bottom:.2rem solid #fff;
     &:hover{
       border-bottom:.2rem solid #000;

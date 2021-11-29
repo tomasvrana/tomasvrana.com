@@ -7,7 +7,7 @@ content:
   back: Zpět
   media: Barva, beton, ocel
   year: 2021
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: Umělecká trojreakce na situaci a okolnosti provázející odstranění sochy Ivana Stěpanoviče Koněva. Ta byla přemístěna do bezpečného místa, protože docházelo k její opakované dehonestaci barvou a památník se stal poutním místem odpůrců i zastánců odstranění sochy. Eskalace absurdit, výhrůžek, diplomatických přestřelek vyvrcholila vyhoštěním dvou ruských diplomatů (7. 6. 2020), kteří se měli podílet na korekci nepohodlných osob spojených s odstraněním sochy z roku 1980. 
   location: Praha
   images:
     - src: /images/konevmen/1.jpg
