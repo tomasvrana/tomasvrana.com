@@ -86,6 +86,9 @@ small {
 .images {
   img {
     padding:0  0 10rem;
+    @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+      padding:0  0 3rem;
+    }
   }
 }
 `
@@ -101,14 +104,17 @@ const Item = (props) => {
             {props.content.year}, {props.content.type}, {props.content.location}
           </small>
           <div className='media'>
-            {props.content.media} ({props.content.width}&times;{props.content.height})
+            {props.content.media}
+            {props.content.width &&
+              <span> ({props.content.width}&times;{props.content.height})</span>
+            }
           </div>
           <div className='desc'>
             <ReactMarkdown>{props.content.description}</ReactMarkdown>
           </div>
           <div className='images'>
             {props.content.images.map((item, index) => (
-              <img src={item.src} alt={props.content.image} />
+              <img key={`img-${index}`} src={item.src} alt={props.content.image} />
             ))}
           </div>
           <Go title={props.content.back} href={props.content.parent} back />

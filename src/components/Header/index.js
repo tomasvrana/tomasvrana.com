@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { ThemeConsumer, NavActiveConsumer } from '../../state'
 import Query from './Query'
 import Link from '../Link'
-import { getURIPathWithoutLang } from '../../helpers/url'
 
 const Container = styled.header`
   width: 100%;
@@ -224,11 +223,6 @@ const Container = styled.header`
 
 
 export default () => {
-
-  useEffect(() => {
-    console.log(getURIPathWithoutLang())
-  }, []) 
-
   return (
     <Query
       render={({ content }) => (
@@ -242,7 +236,7 @@ export default () => {
                 </div>
                 <div className={`menu ${(navActive == '') ? 'home' : ''}`}>
                   {content.content.navigation.map((item, index) => (
-                    <li className={`item-${index}`}><Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href}>{item.title}</Link></li>
+                    <li className={`item-${index}`} key={`menuli-${index}`}><Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href}>{item.title}</Link></li>
                   ))}
                 </div>
               </Container>

@@ -12,7 +12,7 @@ const List = (props) => {
       <h2>{props.title}</h2>
       <Ul>
         {props.children.map((item, index) => (
-          <li>
+          <li key={`infoli-${index}`}>
             <strong>{item.title}</strong>
             <div className='desc'>
               {item.desc}
