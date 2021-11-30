@@ -38,9 +38,6 @@ const List = (props) => {
           {props.children.map((item, index) => (
             <li>
               <h2><Link href={item.href}>{item.title}</Link></h2>
-              <small>
-                <Link href={item.href}>{item.year}</Link>
-              </small>
               <div className='desc'>
                 {item.description}
               </div>

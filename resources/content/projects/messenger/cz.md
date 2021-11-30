@@ -1,7 +1,7 @@
 ---
 title: En (English) home page content
 content:
-  title: Messenger
+  title: Poslíček
   type: Obraz
   parent: /images/
   back: Zpět

@@ -39,14 +39,28 @@ const Container = styled.header`
       }
     }
     &.home {
-      animation: blurnavhome 12s ease 0s infinite;
-      -webkit-animation: blurnavhome 12s ease 0s infinite;
-      -moz-animation: blurnavhome 12s ease 0s infinite;
       top:40rem;
       font-size:1em;
       margin:0 0 0 -32rem;
-      a {
-        color:white;
+      li {
+        &.item-0 {
+          animation: blurnav_0 14s ease 0s infinite;
+          -webkit-animation: blurnav_0 14s ease 0s infinite;
+          -moz-animation: blurnav_0 14s ease 0s infinite;
+        }
+        &.item-1 {
+          animation: blurnav_1 12s ease 0s infinite;
+          -webkit-animation: blurnav_1 12s ease 0s infinite;
+          -moz-animation: blurnav_1 12s ease 0s infinite;
+        }
+        &.item-2 {
+          animation: blurnav_2 9s ease 0s infinite;
+          -webkit-animation: blurnav_2 9s ease 0s infinite;
+          -moz-animation: blurnav_2 9s ease 0s infinite;
+        }
+        a {
+          color:white;
+        }
       }
     }
     @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -146,6 +160,66 @@ const Container = styled.header`
       -ms-filter: blur(2px);
     }
   }
+  @keyframes blurnav_0 {
+    0%, 10%, 25%, 35%, 90%, 94%, 100% {
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+    }
+    4%, 30%, 92%  {
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+    }
+    96% {
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+    }
+  }
+  @keyframes blurnav_1 {
+    0%, 10%, 25%, 35%, 100% {
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+    }
+    4%, 30%, 85%  {
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+    }
+    90% {
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+    }
+  }
+  @keyframes blurnav_2 {
+    0%, 10%, 16%, 25%, 55%, 90%, 94%, 100% {
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+    }
+    13%, 40%, 92%  {
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+    }
+    96% {
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+    }
+  }
 `
 
 
@@ -168,7 +242,7 @@ export default () => {
                 </div>
                 <div className={`menu ${(navActive == '') ? 'home' : ''}`}>
                   {content.content.navigation.map((item, index) => (
-                    <li><Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href}>{item.title}</Link></li>
+                    <li className={`item-${index}`}><Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href}>{item.title}</Link></li>
                   ))}
                 </div>
               </Container>
