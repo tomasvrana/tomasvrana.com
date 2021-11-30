@@ -50,11 +50,11 @@ const Container = styled.div`
     animation: barsmove 1s linear infinite;
   }
   .bars.in {
-    opacity:.08;
+    opacity:.04;
   }
   .barsback {
     position:absolute;
-    opacity:.03;
+    opacity:.04;
     width: 100%;
     height: 100%;
     background: linear-gradient(-90deg, 
@@ -67,7 +67,7 @@ const Container = styled.div`
     animation: barsmove .5s linear infinite;
   }
   .barsback.in {
-    opacity:.2;
+    opacity:.1;
   }
 
 

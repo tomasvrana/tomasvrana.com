@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ThemeConsumer, NavActiveConsumer } from '../../state'
 import Query from './Query'
 import Link from '../Link'
+import Menu from './Menu'
 
 const Container = styled.header`
   width: 100%;
@@ -77,6 +78,9 @@ const Container = styled.header`
         left:0;
         li {
           display:block;
+          &.item-2 {
+            display:none;
+          }
           a {
             color:white;
           }
@@ -234,11 +238,7 @@ export default () => {
                 <div className={`logo ${(navActive == '') ? 'home' : ''}`}>
                   <Link href="/">{content.content.title}</Link>
                 </div>
-                <div className={`menu ${(navActive == '') ? 'home' : ''}`}>
-                  {content.content.navigation.map((item, index) => (
-                    <li className={`item-${index}`} key={`menuli-${index}`}><Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href}>{item.title}</Link></li>
-                  ))}
-                </div>
+                <Menu />
               </Container>
             )}
           </NavActiveConsumer>

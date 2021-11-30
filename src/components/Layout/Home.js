@@ -6,6 +6,7 @@ import Head from '../Head'
 import PageLoader from '../PageLoader'
 import { PageLoaderConsumer } from '../../state'
 import { getURIPath } from '../../helpers/url'
+import Footer from '../Footer'
 
 const Main = styled.main`
   position: relative;
@@ -102,6 +103,7 @@ const Layout = ({ children, headData = null }) => (
         <LoadingMask pageLoading={loading}>
           {children}
         </LoadingMask>
+        <Footer home />
       </Fragment>
     )}
   </PageLoaderConsumer>

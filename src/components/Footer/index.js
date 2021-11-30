@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Query from './Query'
+import PropTypes from 'prop-types'
+import Menu from '../Header/Menu'
 
 const Container = styled.footer`
   width: 100%;
@@ -26,23 +28,52 @@ const Container = styled.footer`
   .right {
     text-align:right;
   }
+
+  @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+    .left {
+      text-align:center;
+      float:none;
+    }
+    .right {
+      text-align:center;
+    }  
+  }
+
+  &.home {
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    color:white;
+    z-index:88;
+    opacity:.5
+  }
 `
 
-const Footer = () => (
-  <Container>
-    <Query
-      render={data => (
-        <Fragment>
-          <div className='left'>
-            2022 &copy; {data.content.left}
-          </div>
-          <div className='right'>
-            {data.content.rights}
-          </div>
-        </Fragment>
-      )}
-    />
-  </Container>
-)
+const Footer = (props) => {
+  return (
+    <Fragment>
+      <Query
+        render={data => (
+          <Container className={`${(props.home) ? 'home' : ''}`}>
+            {props.home &&
+              <Menu />
+            }
+            <div className='left'>
+              2022 &copy; {data.content.left}
+            </div>
+            <div className='right'>
+              {data.content.rights}
+            </div>
+          </Container>
+        )}
+      />
+    </Fragment>
+  )
+}
+
+Footer.propTypes = {
+  home: PropTypes.bool
+}
 
 export default Footer
