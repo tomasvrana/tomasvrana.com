@@ -23,6 +23,8 @@ const Query = ({ render }) => (
                       location
                       parent
                       back
+                      width
+                      height
                       images {
                         src
                       }

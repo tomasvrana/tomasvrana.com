@@ -6,7 +6,9 @@ content:
   parent: /images/
   back: Back
   media: Acryl, canvas
-  year: 2011
+  width: 130
+  height: 120
+  year: 2012
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
   location: Private collection, Ostrava, CZ
   images:

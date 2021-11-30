@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { NavActiveConsumer } from '../../state'
 
@@ -71,10 +71,13 @@ export default () => {
     aid = requestAnimationFrame(loop);
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     canvas = document.getElementById('canvas')
     ctx = canvas.getContext('2d')
     loop()
+    return () => {
+      cancelAnimationFrame(aid)
+    }
   }, [])
 
   return (

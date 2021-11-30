@@ -33,6 +33,6 @@ content:
     - title: Cube
       href: /cube/
       description: 
-      image: /images/kostka/1.jpg
+      image: /images/cube/1.jpg
       year: 2011
 ---

@@ -21,9 +21,13 @@ const Container = styled.header`
     letter-spacing:.3rem;
     margin:0 0 0 -24rem;
     position:absolute;
-    transition: top .5s, font-size .5s, margin .5s, color .5s;
+    transition: top .5s cubic-bezier(0.25,0.1,0.25,1), font-size .5s cubic-bezier(0.25,0.1,0.25,1), margin .5s cubic-bezier(0.25,0.1,0.25,1), color .5s cubic-bezier(0.25,0.1,0.25,1);
     left:50%;
     top:7rem;
+    animation: blurnav 12s ease 0s infinite;
+    -webkit-animation: blurnav 12s ease 0s infinite;
+    -moz-animation: blurnav 12s ease 0s infinite;
+
     li {
       display:inline-block;
       margin:0  3em;
@@ -35,6 +39,9 @@ const Container = styled.header`
       }
     }
     &.home {
+      animation: blurnavhome 12s ease 0s infinite;
+      -webkit-animation: blurnavhome 12s ease 0s infinite;
+      -moz-animation: blurnavhome 12s ease 0s infinite;
       top:40rem;
       font-size:1em;
       margin:0 0 0 -32rem;
@@ -72,28 +79,71 @@ const Container = styled.header`
     display:inline-block;
     letter-spacing:.3rem;
     filter: blur(2px);
-    animation: blur 5s ease 0s infinite;
-    -webkit-animation: blur 5s ease 0s infinite;
-    -moz-animation: blur 5s ease 0s infinite;
-    @keyframes blur {
-      0%,
-      80% {
-        -webkit-filter: blur(2px);
-        -moz-filter: blur(2px);
-        -o-filter: blur(2px);
-        -ms-filter: blur(2px);
-      }
-      40% {
-        -webkit-filter: blur(1px);
-        -moz-filter: blur(1px);
-        -o-filter: blur(1px);
-        -ms-filter: blur(1px);
-      }
-    }
+    animation: logoblur 5s ease 0s infinite;
+    -webkit-animation: logoblur 5s ease 0s infinite;
+    -moz-animation: logoblur 5s ease 0s infinite;
+
     &.home {
       a {
         color:white;
       }
+    }
+  }
+
+  @keyframes logoblur {
+    0%,
+    80% {
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+    }
+    40% {
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+    }
+  }
+
+  @keyframes blurnav {
+    0%, 10%, 90%, 94%, 100% {
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+    }
+    4%, 92%  {
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+    }
+    96% {
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
+    }
+  }
+  @keyframes blurnavhome {
+    0%, 10%, 25%, 35%, 90%, 94%, 100% {
+      -webkit-filter: blur(1px);
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px);
+      -ms-filter: blur(1px);
+    }
+    4%, 30%, 92%  {
+      -webkit-filter: blur(0px);
+      -moz-filter: blur(0px);
+      -o-filter: blur(0px);
+      -ms-filter: blur(0px);
+    }
+    96% {
+      -webkit-filter: blur(2px);
+      -moz-filter: blur(2px);
+      -o-filter: blur(2px);
+      -ms-filter: blur(2px);
     }
   }
 `

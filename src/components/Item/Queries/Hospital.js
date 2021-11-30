@@ -20,6 +20,8 @@ const Query = ({ render }) => (
                       media
                       type
                       year
+                      width
+                      height
                       location
                       parent
                       back

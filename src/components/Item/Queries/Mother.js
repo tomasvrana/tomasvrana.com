@@ -22,6 +22,8 @@ const Query = ({ render }) => (
                       year
                       parent
                       back
+                      width
+                      height
                       location
                       images {
                         src

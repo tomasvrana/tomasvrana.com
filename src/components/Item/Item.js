@@ -97,7 +97,7 @@ const Item = (props) => {
             {props.content.year}, {props.content.type}, {props.content.location}
           </small>
           <div className='media'>
-            {props.content.media}
+            {props.content.media} ({props.content.width}&times;{props.content.height})
           </div>
           <div className='desc'>
             <ReactMarkdown>{props.content.description}</ReactMarkdown>
