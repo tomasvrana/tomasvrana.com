@@ -7,7 +7,7 @@ content:
   back: Zpět
   year: 2019
   media: Barva, ocel, beton
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: 
   location: Ostrava
   images:
     - src: /images/kolos/1.jpg

@@ -9,7 +9,7 @@ content:
   width: 130
   height: 120
   year: 2012
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: 
   location: Private collection, Ostrava, CZ
   images:
     - src: /images/messenger/1.jpg

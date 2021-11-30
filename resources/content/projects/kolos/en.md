@@ -7,7 +7,7 @@ content:
   back: Back
   media: Paint, steel, concrete
   year: 2019
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: 
   location: Ostrava, CZ
   images:
     - src: /images/kolos/1.jpg

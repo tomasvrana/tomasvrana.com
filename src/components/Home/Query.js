@@ -16,12 +16,6 @@ const Query = ({ render }) => (
                   frontmatter {
                     content {
                       title
-                      projects {
-                        title
-                        href
-                        description
-                        image
-                      }
                     }
                   }
                 }

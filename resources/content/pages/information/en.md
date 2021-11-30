@@ -3,21 +3,24 @@ title: En (English) home page content
 content:
   title: INFORMATION
   href: /information/
-  desc: fsdjskh fdksl
+  desc: 
+        
+  member: 
+    
   contact: "E-mail: tom@vrana.org"
   experience:
-    title: Experience
+    title: Zkušenost
     items:
       - title: shool
         desc: fdsfds
       - title: work
         desc: fdsfds
   exhibitions:
-    title: Exhibitions
+    title: Výstavy
     items:
       - title: shool
         desc: fdsfds
       - title: work
         desc: fdsfds
-        
+  
 ---

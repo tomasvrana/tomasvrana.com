@@ -63,7 +63,7 @@ export default new Typography({
     },
     'body,code': {
       'font-size': '1.8rem',
-      'line-height': '2.4rem',
+      'line-height': '1.6',
       'letter-spacing': '0.14rem',
       'font-weight': '300'
     },

@@ -55,7 +55,7 @@ const Container = styled.header`
         margin:0 1em;
       }
       &.home {
-        top:25rem;
+        top:20rem;
         text-align:center;
         font-size:1em;
         margin:0;

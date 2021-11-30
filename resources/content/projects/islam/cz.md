@@ -7,7 +7,7 @@ content:
   back: Zpět
   year: 2019
   media: Herec, herečka
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: 
   location: Opava
   images:
     - src: /images/islam/1.jpg

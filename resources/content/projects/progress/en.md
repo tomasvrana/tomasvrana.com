@@ -7,7 +7,7 @@ content:
   back: Back
   media: Acryl, canvas
   year: 2011
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: 
   location: Opava, CZ
   images:
     - src: /images/progress/1.jpg

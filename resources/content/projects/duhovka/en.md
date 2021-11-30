@@ -7,7 +7,7 @@ content:
   back: Zpět
   year: 2019
   media: Paint, film
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+  description: 
   location: Opava, CZ
   images:
     - src: /images/duhovka/1.jpg
