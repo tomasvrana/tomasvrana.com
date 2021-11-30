@@ -9,7 +9,9 @@ import ReactMarkdown from 'react-markdown'
 import { ThemeConsumer, NavActiveConsumer } from '../../state'
 
 const Container = styled.div`
-
+@media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+padding:0 1em;
+}
 
 `
 

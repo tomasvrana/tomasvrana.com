@@ -33,6 +33,10 @@ h1 {
   padding:2em 0 4em 0;
   max-width:760px;
   margin:auto;
+  @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+    padding-left:1em;
+    padding-right:1em;
+  }
 }
 .media {
   padding:.8rem 0 1rem 0;

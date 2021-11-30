@@ -12,6 +12,10 @@ const Ul = styled.ul`
     margin:0 auto 6em auto;
     h2 {
       margin:0 0 .9rem 0;
+      @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+        padding-left:.5em;
+        padding-right:.5em;
+      }
     }
     small {
       margin:0 0 1rem 0;
@@ -24,6 +28,10 @@ const Ul = styled.ul`
       max-width:600px;
       margin:0 auto 2.5rem auto;
       color:#666;
+      @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+        padding-left:1em;
+        padding-right:1em;
+      }
     }
   }
 

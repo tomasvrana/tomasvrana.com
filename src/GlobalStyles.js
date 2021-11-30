@@ -48,11 +48,16 @@ export default createGlobalStyle`
 
   @media screen and (max-width: 800px) {
     h1 {
-      font-size: 2.4rem;
+      font-size: 3.4rem;
+      letter-spacing:.7rem;
     }
 
     h2 {
       font-size: 2.2rem;
+    }
+
+    p {
+      font-size: 1.4rem;
     }
   }
 
