@@ -6,8 +6,14 @@ content:
   parent: /spaces/
   back: Zpět
   media: Barva, beton, ocel
-  year: 2021
-  description: Umělecká trojreakce na situaci a okolnosti provázející odstranění sochy Ivana Stěpanoviče Koněva. Ta byla přemístěna do bezpečného místa, protože docházelo k její opakované dehonestaci barvou a památník se stal poutním místem odpůrců i zastánců odstranění sochy. Eskalace absurdit, výhrůžek, diplomatických přestřelek vyvrcholila vyhoštěním dvou ruských diplomatů (7. 6. 2020), kteří se měli podílet na korekci nepohodlných osob spojených s odstraněním sochy z roku 1980. 
+  year: 2020
+  description: |
+    Koněvmen (jednotné číslo Koněvman, domácky taky Kloněv nebo Polokoněv) je umelěckou instalací vzniklou v rámci Landscape festival 2020 v Praze na Žižkově.
+
+    Jsou to metrové repliky sochy z pomníku Ivana Stěpanoviče Koněva, která byla odstraněna kvůli opakované vandalizaci. 
+
+    Umělecká trojreakce na situaci a okolnosti provázející odstranění sochy Ivana Stěpanoviče Koněva. Ta byla přemístěna do bezpečného místa, protože docházelo k její opakované dehonestaci barvou a pomník se stal poutním místem odpůrců i zastánců odstranění sochy. Eskalace absurdit, výhrůžek, diplomatických přestřelek vyvrcholila vyhoštěním dvou ruských diplomatů (7. 6. 2020), kteří se měli podílet na korekci nepohodlných osob spojených s odstraněním sochy z roku 1980. 
+
   location: Praha
   images:
     - src: /images/konevmen/1.jpg

@@ -6,8 +6,14 @@ content:
   parent: /spaces/
   back: Back
   media: Paint, steel, concrete
-  year: 2021
-  description: 
+  year: 2020
+  description: |
+    Konevmen (singular Konevman. Clonev for friends) is an art installation created as part of Landscape festival 2020 in Prague 3, Žižkov.
+
+    It's made of small replicas of a statue from the Ivan Stepanovic Konev memorial which has been removed for being repeatedly vandalised. 
+
+    Artistic threesum to the situation and circumstances following before and after removal of a Ivan Stepanovic Statue. This was moved to safe house because of being constantly vandalised with paint and the memorial became demontration place for both sides of the removal conflict. Escalation of absurd accusations, blackmailing, diplomatic rows climaxed with deportation of two russian diplomats (7. 6. 2020) which were supposed to take part in correction of inconvenient people linked to the removal of the statue made in 1980. 
+
   location: Prague, CZ
   images:
     - src: /images/konevmen/1.jpg

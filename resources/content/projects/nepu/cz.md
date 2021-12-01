@@ -13,5 +13,5 @@ content:
   location: Gottfrei, Opava
   images:
     - src: /images/nepu/1.jpg
-    
+    - src: /images/nepu/2.jpg
 ---
