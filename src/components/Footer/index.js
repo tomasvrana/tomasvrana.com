@@ -38,11 +38,12 @@ const Container = styled.footer`
     position:absolute;
     bottom:0;
     left:0;
+    max-width: 100%;
     width:100%;
     color:white;
     z-index:88;
     .left,.right{
-      opacity:.5
+      opacity:.5;
     }
   }
 
