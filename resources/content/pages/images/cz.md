@@ -5,21 +5,6 @@ content:
   more: Vidět více
   href: /images/
   projects:
-    - title: Nemocnice
-      href: /hospital/
-      description: 
-      image: /images/hospital/1.jpg
-      year: 2011
-    - title: Maniak
-      href: /maniak/
-      description: 
-      image: /images/maniak/1.jpg
-      year: 2011
-    - title: Pokrok
-      href: /progress/
-      description: 
-      image: /images/progress/1.jpg
-      year: 2011
     - title: Nepu
       href: /nepu/
       description: 

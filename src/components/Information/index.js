@@ -46,12 +46,6 @@ export default () => (
             <Desc><ReactMarkdown>{frontmatter.content.desc}</ReactMarkdown></Desc>
             <Logo><Link href="//gottfrei.com" target="_blank"><img src={gflogo} alt='' width='150' /></Link></Logo>
             <Desc><ReactMarkdown>{frontmatter.content.member}</ReactMarkdown></Desc>
-            <List title={frontmatter.content.experience.title}>
-              {frontmatter.content.experience.items}
-            </List>
-            <List title={frontmatter.content.exhibitions.title}>
-              {frontmatter.content.exhibitions.items}
-            </List>
             <Contact>{frontmatter.content.contact}</Contact>
           </Container>
         )}

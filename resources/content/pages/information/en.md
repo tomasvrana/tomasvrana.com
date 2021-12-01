@@ -11,16 +11,12 @@ content:
   experience:
     title: Zkušenost
     items:
-      - title: shool
-        desc: fdsfds
-      - title: work
-        desc: fdsfds
+      - title: 
+        desc: 
   exhibitions:
     title: Výstavy
     items:
-      - title: shool
-        desc: fdsfds
-      - title: work
-        desc: fdsfds
+      - title: 
+        desc: 
   
 ---

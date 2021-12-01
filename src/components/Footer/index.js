@@ -28,15 +28,10 @@ const Container = styled.footer`
   .right {
     text-align:right;
   }
-
-  @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
-    .left {
-      text-align:center;
-      float:none;
-    }
-    .right {
-      text-align:center;
-    }  
+  .menu {
+    display:none;
+    list-style-type:none;
+    text-align:center;
   }
 
   &.home {
@@ -46,7 +41,35 @@ const Container = styled.footer`
     width:100%;
     color:white;
     z-index:88;
-    opacity:.5
+    .left,.right{
+      opacity:.5
+    }
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+    .left {
+      text-align:center;
+      float:none;
+    }
+    .right {
+      text-align:center;
+    }
+    &.home {
+      .menu {
+        display:block;
+        margin:-1rem 0 3rem 0;
+        li {
+          display:none;
+          &.item-2 {
+            display:block;
+            font-size:160%;
+            a {
+              color:white
+            }
+          }
+        }
+      }
+    }
   }
 `
 
