@@ -23,6 +23,7 @@ const Query = ({ render }) => (
                         description
                         year
                         image
+                        count
                       }
                     }
                   }

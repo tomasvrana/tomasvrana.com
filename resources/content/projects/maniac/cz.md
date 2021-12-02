@@ -10,6 +10,6 @@ content:
   description: 
   location: Opava, CZ
   images:
-    - src: /images/maniak/1.jpg
+    - src: /images/maniac/1.jpg
     
 ---

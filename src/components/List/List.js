@@ -4,6 +4,7 @@ import Link from '../Link'
 import Go from './Go'
 import PropTypes from 'prop-types'
 import { NavActiveConsumer } from '../../state'
+import { GrAttachment } from 'react-icons/gr'
 
 const Ul = styled.ul`
   list-style-type:none;
@@ -33,6 +34,18 @@ const Ul = styled.ul`
         padding-right:1em;
       }
     }
+    .count {
+      text-align:right;
+      height:0;
+      .num{
+        display:block;
+        font-size:1.2rem;
+        margin:0;
+        line-height:1;
+        font-weight:bold;
+        margin:-.5rem 0 -1.5rem 0;
+      }
+    }
   }
 
 `
@@ -50,7 +63,12 @@ const List = (props) => {
                 {item.description}
               </div>
               <div className='img'>
-                <Link href={item.href} className='block'><img src={item.image} alt={item.title} /></Link>
+                <Link href={item.href} className='block'>
+                  <img src={item.image} alt={item.title} />
+                  {item.count &&
+                    <div className='count'><span className='num'><GrAttachment />&nbsp;{item.count}</span></div>
+                  }
+                </Link>
               </div>
               <Go title={props.more} href={item.href} />
             </li>

@@ -4,5 +4,5 @@ title: En (English) home page meta data
 head:
   title: CUBE - TOMAS VRANA
   meta:
-    - { name: "description", content: "GRAPHICS - TOMAS VRANA", file: "" }
+    - { name: "description", content: "CUBE - TOMAS VRANA", file: "" }
 ---

@@ -4,7 +4,7 @@ content:
   title: Rainbow ball
   type: Instalation
   parent: /spaces/
-  back: Zpět
+  back: Back
   year: 2019
   media: Paint, film
   description: 

@@ -4,7 +4,7 @@ content:
   title: Cube
   type: Instalation
   parent: /spaces/
-  back: Zpět
+  back: Back
   year: 2019
   media: Ocel, dřevo
   description: 
