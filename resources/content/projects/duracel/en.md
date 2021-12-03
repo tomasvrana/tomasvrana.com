@@ -4,6 +4,7 @@ content:
   title: Duracel
   type: Restoration
   parent: /duracel/
+  cooperation: Lukas Zero Pavlicek
   back: Back
   year: 2019
   media: Paint

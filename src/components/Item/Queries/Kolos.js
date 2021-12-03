@@ -21,6 +21,7 @@ const Query = ({ render }) => (
                       type
                       year
                       parent
+                      cooperation
                       back
                       location
                       images {

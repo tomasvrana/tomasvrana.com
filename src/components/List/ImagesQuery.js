@@ -16,7 +16,7 @@ const Query = ({ render }) => (
                   frontmatter {
                     content {
                       title
-                      more
+                      href
                       projects {
                         title
                         href

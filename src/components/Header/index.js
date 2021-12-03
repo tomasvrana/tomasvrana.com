@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ThemeConsumer, NavActiveConsumer } from '../../state'
-import Query from './Query'
+import { NavActiveConsumer } from '../../state'
 import Link from '../Link'
 import Menu from './Menu'
+import Query from '../Global/Query'
 
 const Container = styled.header`
   width: 100%;
@@ -21,7 +21,7 @@ const Container = styled.header`
     letter-spacing:.3rem;
     margin:0 0 0 -24rem;
     position:absolute;
-    transition: top .5s cubic-bezier(0.25,0.1,0.25,1), font-size .5s cubic-bezier(0.25,0.1,0.25,1), margin .5s cubic-bezier(0.25,0.1,0.25,1), color .5s cubic-bezier(0.25,0.1,0.25,1);
+    transition: top .5s cubic-bezier(0.68, -0.6, 0.32, 1.6), font-size .5s cubic-bezier(0.68, -0.6, 0.32, 1.6), margin .5s cubic-bezier(0.68, -0.6, 0.32, 1.6), color .5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
     left:50%;
     top:7rem;
     animation: blurnav 12s ease 0s infinite;
@@ -229,21 +229,17 @@ const Container = styled.header`
 export default () => {
   return (
     <Query
-      render={({ content }) => (
-        <ThemeConsumer>
-        {({ theme }) => (
-          <NavActiveConsumer>
-            {({ navActive }) => (
-              <Container>
-                <div className={`logo ${(navActive == '') ? 'home' : ''}`}>
-                  <Link href="/">{content.content.title}</Link>
-                </div>
-                <Menu />
-              </Container>
-            )}
-          </NavActiveConsumer>
-        )}
-      </ThemeConsumer>
+      render={({ frontmatter }) => (
+        <NavActiveConsumer>
+          {({ navActive }) => (
+            <Container>
+              <div className={`logo ${(navActive == '') ? 'home' : ''}`}>
+                <Link href="/">{frontmatter.header.title}</Link>
+              </div>
+              <Menu />
+            </Container>
+          )}
+        </NavActiveConsumer>
       )}
     />
   )

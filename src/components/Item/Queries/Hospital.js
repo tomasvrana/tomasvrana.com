@@ -23,6 +23,7 @@ const Query = ({ render }) => (
                       width
                       height
                       location
+                      cooperation
                       parent
                       back
                       images {

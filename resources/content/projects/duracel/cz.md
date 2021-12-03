@@ -3,6 +3,7 @@ title: En (English) home page content
 content:
   title: Duracel
   type: Restaurace
+  cooperation: Lukáš Zero Pavlíček
   parent: /spaces/
   back: Zpět
   year: 2019

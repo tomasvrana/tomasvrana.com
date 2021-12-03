@@ -5,6 +5,7 @@ content:
   type: Instalation
   parent: /spaces/
   back: Back
+  cooperation: Vaclav Minarik
   year: 2019
   media: Paint, film
   description: 

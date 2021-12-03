@@ -2,7 +2,6 @@
 title: En (English) home page content
 content:
   title: PROSTOR
-  more: Vidět více
   href: /spaces/
   projects:
     - title: Konevmen

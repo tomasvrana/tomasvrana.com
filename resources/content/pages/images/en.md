@@ -2,7 +2,6 @@
 title: En (English) home page content
 content:
   title: IMAGES
-  more: See more
   href: /images/
   projects:
     - title: Hospital

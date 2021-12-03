@@ -4,6 +4,7 @@ content:
   title: Konevmen
   type: Installation
   parent: /spaces/
+  cooperation: Václav Minarik, Martina Pavelkova
   back: Back
   media: Paint, steel, concrete
   year: 2020

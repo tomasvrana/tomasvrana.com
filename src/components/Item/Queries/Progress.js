@@ -25,6 +25,7 @@ const Query = ({ render }) => (
                       back
                       width
                       height
+                      cooperation
                       images {
                         src
                       }

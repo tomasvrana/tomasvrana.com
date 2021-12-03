@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import Query from './Query'
 import PropTypes from 'prop-types'
 import Menu from '../Header/Menu'
+import Query from '../Global/Query'
 
 const Container = styled.footer`
   width: 100%;
@@ -78,16 +78,16 @@ const Footer = (props) => {
   return (
     <Fragment>
       <Query
-        render={data => (
+        render={({ frontmatter }) => (
           <Container className={`${(props.home) ? 'home' : ''}`}>
             {props.home &&
               <Menu />
             }
             <div className='left'>
-              2022 &copy; {data.content.left}
+              2022 &copy; {frontmatter.footer.left}
             </div>
             <div className='right'>
-              {data.content.rights}
+              {frontmatter.footer.rights}
             </div>
           </Container>
         )}

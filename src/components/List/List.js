@@ -5,6 +5,7 @@ import Go from './Go'
 import PropTypes from 'prop-types'
 import { NavActiveConsumer } from '../../state'
 import { GrAttachment } from 'react-icons/gr'
+import GlobalQuery from '../Global/Query'
 
 const Ul = styled.ul`
   list-style-type:none;
@@ -52,37 +53,51 @@ const Ul = styled.ul`
 
 const List = (props) => {
   return (
-    <NavActiveConsumer>
-      {({ updateNavActive }) => (
-        <Ul>
-          {updateNavActive(props.href)}
-          {props.children.map((item, index) => (
-            <li key={`listli-${index}`}>
-              <h2><Link href={item.href}>{item.title}</Link></h2>
-              <div className='desc'>
-                {item.description}
-              </div>
-              <div className='img'>
-                <Link href={item.href} className='block'>
-                  <img src={item.image} alt={item.title} />
-                  {item.count &&
-                    <div className='count'><span className='num'><GrAttachment />&nbsp;{item.count}</span></div>
-                  }
-                </Link>
-              </div>
-              <Go title={props.more} href={item.href} />
-            </li>
-          ))}
-        </Ul>
+    <GlobalQuery
+      render={({ frontmatter }) => (
+        <NavActiveConsumer>
+          {({ updateNavActive }) => (
+            <Ul>
+              {updateNavActive(props.href)}
+              {props.children.map((item, index) => (
+                <li key={`listli-${index}`}>
+                  <h2><Link href={item.href}>{item.title}</Link></h2>
+                  <div className='desc'>
+                    {item.description}
+                  </div>
+                  <div className='img'>
+                    <Link href={item.href} className='block'>
+                      <img src={item.image} alt={item.title} />
+                      {item.count &&
+                        <Fragment>
+                          {(item.count == 1) &&
+                            <div className='count'><span className='num' title={`${item.count} ${frontmatter.others.image}`}><GrAttachment />&nbsp;{item.count}</span></div>
+                          }
+                          {(item.count > 1 && item.count < 5) &&
+                            <div className='count'><span className='num' title={`${item.count} ${frontmatter.others.images}`}><GrAttachment />&nbsp;{item.count}</span></div>
+                          }
+                          {(item.count >= 5) &&
+                            <div className='count'><span className='num' title={`${item.count} ${frontmatter.others.imagess}`}><GrAttachment />&nbsp;{item.count}</span></div>
+                          }
+                        </Fragment>
+                      }
+                    </Link>
+                  </div>
+                  <Go title={frontmatter.others.more} href={item.href} />
+                </li>
+              ))}
+            </Ul>
+          )}
+        </NavActiveConsumer>
       )}
-    </NavActiveConsumer>
+    />
   )
 }
 
 List.propTypes = {
   title: PropTypes.string,
-  more: PropTypes.string,
   href: PropTypes.string,
+  global: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.node).isRequired
 }
 

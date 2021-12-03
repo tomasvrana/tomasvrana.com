@@ -8,7 +8,7 @@ export default () => (
     render={({ frontmatter }) => (
       <Fragment>
         <Title title={frontmatter.content.title} />
-        <List more={frontmatter.content.more} href={frontmatter.content.href}>
+        <List href={frontmatter.content.href}>
           {frontmatter.content.projects}
         </List>
       </Fragment>

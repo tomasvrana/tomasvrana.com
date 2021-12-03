@@ -5,6 +5,7 @@
   "author": "Lewis Nelson <lewis.nelson@tv.io>",
   "dependencies": {
     "@ctrl/tinycolor": "^2.4.0",
+    "d3-ease": "^3.0.1",
     "gatsby": "^2.10.0",
     "gatsby-image": "^2.0.40",
     "gatsby-plugin-manifest": "^2.0.29",

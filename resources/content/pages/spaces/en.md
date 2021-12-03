@@ -2,7 +2,6 @@
 title: En (English) home page content
 content:
   title: SPACES
-  more: See more
   href: /spaces/
   projects:
     - title: Konevmen

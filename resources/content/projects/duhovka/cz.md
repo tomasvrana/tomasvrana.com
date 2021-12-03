@@ -6,6 +6,7 @@ content:
   parent: /spaces/
   back: Zpět
   year: 2019
+  cooperation: Václav Minařík
   media: Barva, folie
   description: 
   location: Opava

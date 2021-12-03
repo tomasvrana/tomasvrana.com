@@ -20,6 +20,7 @@ const Query = ({ render }) => (
                       media
                       type
                       year
+                      cooperation
                       location
                       parent
                       back

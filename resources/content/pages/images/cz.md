@@ -2,7 +2,6 @@
 title: En (English) home page content
 content:
   title: OBRAZY
-  more: Vidět více
   href: /images/
   projects:
     - title: Nemocnice

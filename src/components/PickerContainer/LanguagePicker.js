@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { LanguageConsumer, NavActiveConsumer, ThemeConsumer } from '../../state'
 import config from '../../config'
-import Query from './Query'
 import styled from 'styled-components'
 import MediaQuery from 'react-responsive'
 
@@ -38,34 +37,30 @@ const List = styled.ul`
 `
 
 export default () => (
-  <Query
-    render={({ select_language: selectLanguage }) => (
-      <ThemeConsumer>
-        {({ theme }) => (
-          <NavActiveConsumer>
-            {({ navActive }) => (
-              <LanguageConsumer>
-                {({ lang, setLang }) => (
-                  <List className={`${(navActive == '') ? 'home' : ''}`}>
-                    {Object.keys(config.availableLanguages).map(key => (
-                      <li>
-                        <button className={(lang == key) ? 'active' : ''} href='#' onClick={lang => setLang(key)}>
-                          <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
-                            {key}
-                          </MediaQuery>
-                          <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
-                            {config.availableLanguages[key].label}
-                          </MediaQuery>
-                        </button>
-                      </li>
-                    ))}
-                  </List>
-                )}
-              </LanguageConsumer>
+  <ThemeConsumer>
+    {({ theme }) => (
+      <NavActiveConsumer>
+        {({ navActive }) => (
+          <LanguageConsumer>
+            {({ lang, setLang }) => (
+              <List className={`${(navActive == '') ? 'home' : ''}`}>
+                {Object.keys(config.availableLanguages).map(key => (
+                  <li>
+                    <button className={(lang == key) ? 'active' : ''} href='#' onClick={lang => setLang(key)}>
+                      <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
+                        {key}
+                      </MediaQuery>
+                      <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
+                        {config.availableLanguages[key].label}
+                      </MediaQuery>
+                    </button>
+                  </li>
+                ))}
+              </List>
             )}
-          </NavActiveConsumer>
+          </LanguageConsumer>
         )}
-      </ThemeConsumer>
+      </NavActiveConsumer>
     )}
-  />
+  </ThemeConsumer>
 )

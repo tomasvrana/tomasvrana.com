@@ -5,6 +5,7 @@ content:
   type: Instalace
   parent: /spaces/
   back: Zpět
+  cooperation: Václav Minařík, Martina Pavelková
   media: Barva, beton, ocel
   year: 2020
   description: |

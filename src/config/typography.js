@@ -22,7 +22,6 @@ export default new Typography({
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
       'margin': '1rem 0 3rem 0',
-      'text-align': 'center',
       'font-weight': '200',
       'font-size': '6rem',
       'line-height': '5.6rem',
