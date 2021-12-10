@@ -4,7 +4,7 @@ content:
   title: PROSTOR
   href: /spaces/
   projects:
-    - title: Konevmen
+    - title: Koněvmen
       href: /konevmen/
       description: 
       image: /images/konevmen/1.jpg

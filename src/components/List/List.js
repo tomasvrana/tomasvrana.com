@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { NavActiveConsumer } from '../../state'
 import { GrAttachment } from 'react-icons/gr'
 import GlobalQuery from '../Global/Query'
+import Reveal from '../Layout/Reveal'
 
 const Ul = styled.ul`
   list-style-type:none;
@@ -35,6 +36,50 @@ const Ul = styled.ul`
         padding-right:1em;
       }
     }
+    .img {
+      img {
+        animation: blurimg 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        -webkit-animation: blurimg 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        -moz-animation: blurimg 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        @keyframes blurimg {
+          0%{
+            -webkit-filter: blur(50px);
+            -moz-filter: blur(50px);
+            -o-filter: blur(50px);
+            -ms-filter: blur(50px);
+          }
+          0%,10%,20%,30%,40%,60%,80% {
+            opacity:0;
+          }
+          5% {
+            opacity:.1;
+          }
+          15% {
+            opacity:.3;
+          }
+          25% {
+            opacity:.5;
+          }
+          35% {
+            opacity:.6;
+          }
+          50% {
+            opacity:.5;
+          }
+          70% {
+            opacity:.6;
+          }
+
+          100% {
+            opacity:1;
+            -webkit-filter: blur(0px);
+            -moz-filter: blur(0px);
+            -o-filter: blur(0px);
+            -ms-filter: blur(0px);
+          }
+        }
+      }
+    }
     .count {
       text-align:right;
       height:0;
@@ -61,7 +106,7 @@ const List = (props) => {
               {updateNavActive(props.href)}
               {props.children.map((item, index) => (
                 <li key={`listli-${index}`}>
-                  <h2><Link href={item.href}>{item.title}</Link></h2>
+                  <h2><Link href={item.href}><Reveal>{item.title}</Reveal></Link></h2>
                   <div className='desc'>
                     {item.description}
                   </div>

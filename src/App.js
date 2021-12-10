@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { ThemeProvider, ThemeConsumer, LanguageProvider, LanguageConsumer, PageLoaderProvider, CookieConsentProvider, HeaderProvider, NavActiveProvider } from './state'
+import { ThemeProvider, ThemeConsumer, LanguageProvider, LanguageConsumer, PageLoaderProvider, CookieConsentProvider, HeaderProvider, MobileNavToggleProvider, NavActiveProvider } from './state'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import PickerContainer from './components/PickerContainer'
 import Header from './components/Header'
@@ -16,19 +16,21 @@ const App = ({ element }) => (
               <GlobalStyles />
               <LanguageProvider>
                 <NavActiveProvider>
-                  <PageLoaderProvider>
-                    <Fragment>
-                      <PickerContainer />
-                      <LanguageConsumer>
-                        {({ lang }) => (
-                          <HeaderProvider lang={lang}>
-                            <Header />
-                          </HeaderProvider>
-                        )}
-                      </LanguageConsumer>
-                      {element}
-                    </Fragment>
-                  </PageLoaderProvider>
+                  <MobileNavToggleProvider>
+                    <PageLoaderProvider>
+                      <Fragment>
+                        <PickerContainer />
+                        <LanguageConsumer>
+                          {({ lang }) => (
+                            <HeaderProvider lang={lang}>
+                              <Header />
+                            </HeaderProvider>
+                          )}
+                        </LanguageConsumer>
+                        {element}
+                      </Fragment>
+                    </PageLoaderProvider>
+                  </MobileNavToggleProvider>
                 </NavActiveProvider>
               </LanguageProvider>
             </Fragment>

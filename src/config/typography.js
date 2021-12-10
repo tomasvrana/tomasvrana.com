@@ -23,7 +23,7 @@ export default new Typography({
     'h1': {
       'margin': '1rem 0 3rem 0',
       'font-weight': '200',
-      'font-size': '6rem',
+      'font-size': '4rem',
       'line-height': '5.6rem',
       'letter-spacing': '1.4rem'
     },

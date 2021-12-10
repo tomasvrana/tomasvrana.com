@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Menu from '../Header/Menu'
 import Query from '../Global/Query'
+import Reveal from '../Layout/Reveal'
 
 const Container = styled.footer`
   width: 100%;
@@ -84,10 +85,10 @@ const Footer = (props) => {
               <Menu />
             }
             <div className='left'>
-              2022 &copy; {frontmatter.footer.left}
+              2022 &copy; <Reveal>{frontmatter.footer.left}</Reveal>
             </div>
             <div className='right'>
-              {frontmatter.footer.rights}
+              <Reveal>{frontmatter.footer.rights}</Reveal>
             </div>
           </Container>
         )}

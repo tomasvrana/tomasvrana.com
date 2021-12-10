@@ -101,6 +101,12 @@ export default createGlobalStyle`
     display: inline-block;
   }
 
+  .opacity-0 {
+    opacity:0
+  }
+
+
+
   ${'' /**
     Example:
 

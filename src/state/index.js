@@ -22,6 +22,10 @@ import {
   Consumer as NavActiveConsumer,
   Provider as NavActiveProvider
 } from './NavActive'
+import {
+  Consumer as MobileNavToggleConsumer,
+  Provider as MobileNavToggleProvider
+} from './MobileNavToggle'
 
 export {
   CookieConsentConsumer,
@@ -34,6 +38,8 @@ export {
   PageLoaderProvider,
   ThemeConsumer,
   ThemeProvider,
+  MobileNavToggleConsumer,
+  MobileNavToggleProvider,
   NavActiveConsumer,
   NavActiveProvider
 }

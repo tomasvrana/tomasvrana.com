@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Query from './Query'
-import List from './List'
 import Link from '../Link'
-import Title from '../List/Title'
+import Title from '../List/TitleTag'
 import gflogo from '../../../resources/images/gf.svg'
-import ReactMarkdown from 'react-markdown'
-import { ThemeConsumer, NavActiveConsumer } from '../../state'
+import { NavActiveConsumer } from '../../state'
+import Reveal from '../Layout/Reveal'
 
 const Container = styled.div`
 @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -42,11 +41,13 @@ export default () => (
         {({ updateNavActive }) => (
           <Container>
             {updateNavActive(frontmatter.content.href)}
-            <Title title={frontmatter.content.title} />
-            <Desc><ReactMarkdown>{frontmatter.content.desc}</ReactMarkdown></Desc>
+            <Title><Reveal>{frontmatter.content.title}</Reveal></Title>
+            <Desc><Reveal>{frontmatter.content.desc}</Reveal></Desc>
+            <br />
+            <br />
+            <Desc><Reveal>{frontmatter.content.member}</Reveal></Desc>
             <Logo><Link href="//gottfrei.com" target="_blank"><img src={gflogo} alt='' width='150' /></Link></Logo>
-            <Desc><ReactMarkdown>{frontmatter.content.member}</ReactMarkdown></Desc>
-            <Contact>{frontmatter.content.contact}</Contact>
+            <Contact><Reveal>{frontmatter.content.contact}</Reveal></Contact>
           </Container>
         )}
       </NavActiveConsumer>

@@ -14,7 +14,7 @@ const List = styled.ul`
     display:inline-block;
     button {
       padding:1em 0;
-      margin:0 1em;
+      margin:0 .5rem;
       line-height:1;
       background:transparent;
       text-transform:uppercase;
@@ -47,12 +47,7 @@ export default () => (
                 {Object.keys(config.availableLanguages).map(key => (
                   <li>
                     <button className={(lang == key) ? 'active' : ''} href='#' onClick={lang => setLang(key)}>
-                      <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
                         {key}
-                      </MediaQuery>
-                      <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
-                        {config.availableLanguages[key].label}
-                      </MediaQuery>
                     </button>
                   </li>
                 ))}

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Link from '../Link'
+import Reveal from '../Layout/Reveal'
 
 const Container = styled.div`
   .go{
@@ -18,7 +19,7 @@ const Container = styled.div`
       border-bottom:.2rem solid #000;
       opacity:1;
     }
-    span {
+    .arrow {
       font-size:130%;
     }
   }
@@ -28,11 +29,11 @@ const Go = (props) => {
     <Container>
       <Link className='go' href={props.href}>
         {props.back &&
-          <span>&lt;&nbsp;</span>
+          <span className='arrow'>&lt;&nbsp;</span>
         }
-        {props.title}
+        <Reveal>{props.title}</Reveal>
         {!props.back &&
-          <span>&nbsp;&gt;</span>
+          <span className='arrow'>&nbsp;&gt;</span>
         }
       </Link>
     </Container>

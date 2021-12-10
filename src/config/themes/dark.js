@@ -1,7 +1,7 @@
 
 export default {
   colors: {
-    primary: '#fff',
+    primary: '#fefefe',
     primaryHighlight: '#0f4f0c',
     secondary: 'rgba(83, 87, 135, 0.95)',
     interactive: 'rgb(31, 123, 135)',

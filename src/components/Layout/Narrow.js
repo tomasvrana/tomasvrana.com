@@ -13,7 +13,7 @@ const Main = styled.main`
   z-index: 1;
   margin: 0 auto;
   width: 100%;
-  padding:13rem 0 ;
+  padding:8rem 0 ;
   opacity: 1;
   transition: 0.5s opacity ease-in-out;
   max-width: 650px;

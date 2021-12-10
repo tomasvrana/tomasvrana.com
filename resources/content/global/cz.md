@@ -8,7 +8,7 @@ header:
       href: /images/
     - title: Prostor
       href: /spaces/
-    - title: Informace
+    - title: Info
       href: /information/
 others:
   cooperation: Spolupráce

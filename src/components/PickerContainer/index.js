@@ -2,30 +2,15 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import LanguagePicker from './LanguagePicker'
 import MediaQuery from 'react-responsive'
-import { ThemeConsumer } from '../../state'
-
-const BlockContainer = styled.div`
-  position: absolute;
-  z-index: 20;
-  width: 100%;
-  max-width: ${({ theme }) => theme.dimensions.contentWidth};
-  display: block;
-  top: 0;
-  padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
-  right: 10px;
-  height: 0;
-
-  &:hover {
-    position: absolute;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
-    top: .5rem;
-    box-sizing: border-box;
-  }
-`
+import { ThemeConsumer, MobileNavToggleConsumer } from '../../state'
 
 const LanguageContainer = styled.div`
+  position: absolute;
+  z-index: 20;
+  width:10rem;
+  top: 0;
+  right: 30px;
+
   width: 100%;
   max-width: 17rem;
   min-width: 12rem;
@@ -35,10 +20,23 @@ const LanguageContainer = styled.div`
   align-items: center;
   margin-left: auto;
 
-  &.short {
-    width: auto;
-    min-width: auto;
-    margin-left: none;
+  &.mobile {
+    top: auto;
+    bottom:0;
+    right: auto;
+    left: 0;
+    width:100%;
+    text-align: center;
+    min-width: 1em;
+    max-width: 1000em;
+    margin:0;
+    ul {
+      width:100%;
+      text-align: center;
+    }
+    button {
+      color:white;
+    }
   }
 
   > div {
@@ -50,24 +48,28 @@ const LanguageContainer = styled.div`
 const PickerContainer = () => (
   <ThemeConsumer>
     {({ theme }) => (
-      <Fragment>
-        <BlockContainer>
-          <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
-            <LanguageContainer>
-              <div>
-                <LanguagePicker />
-              </div>
-            </LanguageContainer>
-          </MediaQuery>
-          <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
-            <LanguageContainer className='short'>
-              <div>
-                <LanguagePicker />
-              </div>
-            </LanguageContainer>
-          </MediaQuery>
-        </BlockContainer>
-      </Fragment>
+      <MobileNavToggleConsumer>
+        {({ toggle }) => (
+          <Fragment>
+            <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
+              <LanguageContainer>
+                <div>
+                  <LanguagePicker />
+                </div>
+              </LanguageContainer>
+            </MediaQuery>
+            <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
+              {toggle &&
+                <LanguageContainer className='mobile'>
+                  <div>
+                    <LanguagePicker />
+                  </div>
+                </LanguageContainer>
+              }
+            </MediaQuery>
+          </Fragment>
+        )}
+      </MobileNavToggleConsumer>
     )}
   </ThemeConsumer>
 )

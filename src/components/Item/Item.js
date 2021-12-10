@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import { NavActiveConsumer } from '../../state'
 import GlobalQuery from '../Global/Query'
+import Reveal from '../Layout/Reveal'
 
 const Container = styled.div`
 text-align:center;
@@ -15,14 +16,13 @@ h1 {
   -webkit-animation: blur1 8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite;
   -moz-animation: blur1 8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite;
   @keyframes blur1 {
-    0%,
-    80% {
+    0% {
       -webkit-filter: blur(1px);
       -moz-filter: blur(1px);
       -o-filter: blur(1px);
       -ms-filter: blur(1px);
     }
-    40% {
+    10%,100% {
       -webkit-filter: blur(0px);
       -moz-filter: blur(0px);
       -o-filter: blur(0px);
@@ -47,13 +47,13 @@ h1 {
   -moz-animation: blur2 5s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite;
   @keyframes blur2 {
     0%,
-    40% {
+    40%, 50% {
       -webkit-filter: blur(0px);
       -moz-filter: blur(0px);
       -o-filter: blur(0px);
       -ms-filter: blur(0px);
     }
-    60% {
+    45% {
       -webkit-filter: blur(1px);
       -moz-filter: blur(1px);
       -o-filter: blur(1px);
@@ -69,13 +69,13 @@ small {
   -moz-animation: blur3 4s ease 0s infinite;
   @keyframes blur3 {
     0%,
-    90% {
+    10% {
       -webkit-filter: blur(1px);
       -moz-filter: blur(1px);
       -o-filter: blur(1px);
       -ms-filter: blur(1px);
     }
-    40% {
+    15%, 100% {
       -webkit-filter: blur(0px);
       -moz-filter: blur(0px);
       -o-filter: blur(0px);
@@ -87,6 +87,46 @@ small {
 .images {
   img {
     padding:0  0 10rem;
+    animation: blurimg 1s ease;
+    -webkit-animation: blurimg 1s ease;
+    -moz-animation: blurimg 1s ease;
+    @keyframes blurimg {
+      0%{
+        -webkit-filter: blur(50px);
+        -moz-filter: blur(50px);
+        -o-filter: blur(50px);
+        -ms-filter: blur(50px);
+      }
+      0%,10%,20%,30%,40%,60%,80% {
+        opacity:0;
+      }
+      5% {
+        opacity:.1;
+      }
+      15% {
+        opacity:.3;
+      }
+      25% {
+        opacity:.5;
+      }
+      35% {
+        opacity:.6;
+      }
+      50% {
+        opacity:.5;
+      }
+      70% {
+        opacity:.6;
+      }
+
+      100% {
+        opacity:1;
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+      }
+    }
     @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
       padding:0  0 3rem;
     }
@@ -102,7 +142,7 @@ small {
   -moz-animation: blur4 10s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite;
   @keyframes blur4 {
     0%,
-    40% {
+    50%, 65% {
       -webkit-filter: blur(0px);
       -moz-filter: blur(0px);
       -o-filter: blur(0px);
@@ -123,6 +163,7 @@ small {
 `
 
 const Item = (props) => {
+  const subline = props.content.year + ', ' + props.content.type + ', ' + props.content.location
   return (
     <GlobalQuery
       render={({ frontmatter }) => (
@@ -130,23 +171,21 @@ const Item = (props) => {
           {({ navActive, updateNavActive }) => (
             <Container>
               {updateNavActive(props.content.parent)}
-              <h1>{props.content.title}</h1>
-              <small>
-                {props.content.year}, {props.content.type}, {props.content.location}
-              </small>
+              <h1><Reveal>{props.content.title}</Reveal></h1>
+              <small><Reveal>{subline}</Reveal></small>
               {props.content.cooperation &&
                 <div className='cooperation'>
-                  <div>{frontmatter.others.cooperation}: </div>
-                  {props.content.cooperation}</div>
+                  <div><Reveal>{frontmatter.others.cooperation}</Reveal></div>
+                  <Reveal>{props.content.cooperation}</Reveal></div>
               }
               <div className='media'>
-                {props.content.media}
+                <Reveal>{props.content.media}</Reveal>
                 {props.content.width &&
                   <span> ({props.content.width}&times;{props.content.height})</span>
                 }
               </div>
               <div className='desc'>
-                <ReactMarkdown>{props.content.description}</ReactMarkdown>
+                <Reveal introVal={50}>{props.content.description}</Reveal>
               </div>
               <div className='images'>
                 {props.content.images.map((item, index) => (

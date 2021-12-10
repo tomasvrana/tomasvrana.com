@@ -4,12 +4,12 @@ content:
   title: Konevmen
   type: Installation
   parent: /spaces/
-  cooperation: Václav Minarik, Martina Pavelkova
+  cooperation: Vaclav Minarik, Martina Pavelkova
   back: Back
   media: Paint, steel, concrete
   year: 2020
   description: |
-    Konevmen (singular Konevman. Clonev for friends) is an art installation created as part of Landscape festival 2020 in Prague 3, Žižkov.
+    Konevmen (singular Konevman. Clonev for friends) is an art installation created as part of Landscape festival 2020 in Prague 3, Zizkov.
 
     It's made of small replicas of a statue from the Ivan Stepanovic Konev memorial which has been removed for being repeatedly vandalised. 
 

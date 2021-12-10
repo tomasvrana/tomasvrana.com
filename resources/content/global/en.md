@@ -8,7 +8,7 @@ header:
       href: /images/
     - title: Spaces
       href: /spaces/
-    - title: Information
+    - title: Info
       href: /information/
 others:
   cooperation: Cooperation
