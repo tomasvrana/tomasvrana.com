@@ -42,7 +42,7 @@ const Container = styled.footer`
     max-width: 100%;
     width:100%;
     color:white;
-    z-index:88;
+    z-index:5;
     .left,.right{
       opacity:.5;
     }

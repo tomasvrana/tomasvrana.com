@@ -55,7 +55,6 @@ const Container = styled.header`
       }
     }
     &.home {
-      font-size:6rem;
       li {
         &.item-0 {
           animation: blurnav_0 14s ease 0s infinite;
@@ -284,6 +283,7 @@ const Container = styled.header`
     width:100%;
     height:100%;
     color:white;
+    z-index:30;
     text-align:center;
     ul.menu {
       @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -307,6 +307,7 @@ const Container = styled.header`
     width:7rem;
     height:7rem;
     background:#fff;
+    z-index:35;
     padding:0 2rem;
     text-align:center;
     border:0;
@@ -340,6 +341,12 @@ const Container = styled.header`
         }
       }
     }
+    &.home {
+      background:transparent;
+      .bar {
+        background:#fff;
+      }
+    }
   }
 `
 
@@ -364,7 +371,7 @@ export default () => {
                         <Menu />
                       </MediaQuery>
                       <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
-                        <button className={`mobile-nav-toggle ${(toggle) ? 'on' : 'off'}`} onClick={() => toggleMobileNav()}><span className='bar bar-0'></span><span className='bar bar-1'></span><span className='bar bar-2'></span></button>
+                        <button className={`mobile-nav-toggle ${(toggle) ? 'on' : 'off'} ${(navActive == '') ? 'home' : ''}`} onClick={() => toggleMobileNav()}><span className='bar bar-0'></span><span className='bar bar-1'></span><span className='bar bar-2'></span></button>
                         {toggle &&
                           <div className='mobile-nav-pop'>
                             <Menu />
