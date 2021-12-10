@@ -131,6 +131,7 @@ const Box = (props) => {
   function revealTextSetup () {
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
+      pause = Math.floor(Math.random() * (((myarr[b].length < 100) ? (100 - myarr[b].length) : 1) * 100)) + 100
       glitch[b] = false
       blurB[b] = false
       ll[b] = []
@@ -140,7 +141,7 @@ const Box = (props) => {
       rollingT[b] = []
       glitchpos[b] = Math.floor(Math.random() * myarr[b].length)
       blur[b]= Math.floor(Math.random() * myarr[b].length)
-      blurT[b] = Math.floor(Math.random() * 20) + ((myarr[b].length < 100) ? Math.abs(100 - myarr[b].length) : 0)
+      blurT[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
       bl[b] = 0
       for(let i = 0; i < myarr[b].length; i++){
         ll[b][i] = Math.floor(Math.random() * arr.length)
@@ -176,7 +177,7 @@ const Box = (props) => {
             blurB[b] = false
           }else{
             blur[b]= Math.floor(Math.random() * block[b].length)
-            blurT[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? Math.abs(100 - myarr[b].length) : 0) + 20)) + ((myarr[b].length < 100) ? Math.abs(100 - myarr[b].length) : 0)
+            blurT[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 20))
             bl[b] = 0
             blurB[b] = true
           }
@@ -210,7 +211,7 @@ const Box = (props) => {
               }
               if(glitch[b]){
                 glitch[b] = false
-                pause = Math.floor(Math.random() * 2000) + 100
+                pause = Math.floor(Math.random() * (((myarr[b].length < 100) ? (100 - myarr[b].length) : 1) * 100)) + 100
                 let newArr = [...glitchBool]
                 newArr[b] = false
                 setGlitchBool(newArr)
@@ -218,7 +219,7 @@ const Box = (props) => {
                 glitchpos[b] = Math.floor(Math.random() * myarr[b].length)
                 setGlitchIndex(glitchpos)
                 rolling[b][glitchpos[b]] = true
-                rollingT[b][glitchpos[b]] = Math.floor(Math.random() * 30) + ((myarr[b].length < 100) ? Math.abs(100 - myarr[b].length) : 0)
+                rollingT[b][glitchpos[b]] = Math.floor(Math.random() * 50) + 5
                 l = 0
               }
             }else{
