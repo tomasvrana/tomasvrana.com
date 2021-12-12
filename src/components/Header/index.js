@@ -78,28 +78,27 @@ const Container = styled.header`
       }
     }
     @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
-      display:none;
       li {
         margin:0 1em;
       }
-      &.home {
-        top:20rem;
-        text-align:center;
-        font-size:1em;
-        margin:0;
-        width:100%;
-        line-height:3;
-        left:0;
-        li {
-          display:block;
-          &.item-2 {
-            display:none;
-          }
-          a {
-            color:white;
-          }
+      display:block;
+      top:20rem;
+      text-align:center;
+      font-size:1em;
+      margin:0;
+      width:100%;
+      line-height:3;
+      left:0;
+      li {
+        display:block;
+        &.item-2 {
+          display:none;
+        }
+        a {
+          color:white;
         }
       }
+      
     }
   }
 
@@ -312,6 +311,7 @@ const Container = styled.header`
     text-align:center;
     border:0;
     line-height:.4;
+    animation:hamburgerin 2s ease;
     .bar {
       vertical-align:top;
       display:inline-block;
@@ -320,13 +320,20 @@ const Container = styled.header`
       height:.4rem;
       background:#000;
       margin:0;
-      transition:all .2s ease;
+      transition:all .4s ease;
+    }
+    .bar-1 {
+      animation:hamburgerbar1 2s ease;
+    }
+    .bar-2 {
+      animation:hamburgerbar2 2s ease;
     }
     &.on {
       background:transparent;
       .bar {
         background:#fff;
         margin:0;
+        position:relative;
         &.bar-0 {
           transform: rotate(45deg);
           margin:0 -.5rem 0 0;
@@ -334,9 +341,9 @@ const Container = styled.header`
         &.bar-1 {
           transform: rotate(-45deg);
           margin:-.7rem -.5rem .5rem 0;
+          animation:hamburgerbars 2s ease;
         }
         &.bar-2 {
-          height:0;
           width:0;
         }
       }
@@ -348,6 +355,40 @@ const Container = styled.header`
       }
     }
   }
+  @keyframes hamburgerin {
+    0% {
+      right:-80px;
+    }
+    60% {
+      right:-80px;
+    }
+    80% {
+      right:0px;
+    }
+  }
+  @keyframes hamburgerbar1 {
+    0% {
+      margin-top:-8px;
+    }
+    80% {
+      margin-top:-8px;
+    }
+    100% {
+      margin-top:0px;
+    }
+  }
+  @keyframes hamburgerbar2 {
+    0% {
+      margin-top:-14px;
+    }
+    80% {
+      margin-top:-14px;
+    }
+    100% {
+      margin-top:0px;
+    }
+  }
+
 `
 
 
@@ -363,7 +404,7 @@ export default () => {
                   {({ navActive }) => (
                     <Container>
                       <div className={`logo ${(navActive == '') ? 'home' : ''} ${(toggle) ? 'mobile-nav-on' : ''}`}>
-                        <Link href="/">
+                        <Link href="/" onClick={() => toggle && toggleMobileNav()}>
                           <Reveal>{frontmatter.header.title}</Reveal>
                         </Link>
                       </div>

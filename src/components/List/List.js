@@ -104,7 +104,7 @@ const List = (props) => {
           {({ updateNavActive }) => (
             <Ul>
               {updateNavActive(props.href)}
-              {props.children.map((item, index) => (
+              {props.children && props.children.map((item, index) => (
                 <li key={`listli-${index}`}>
                   <h2><Link href={item.href}><Reveal>{item.title}</Reveal></Link></h2>
                   <div className='desc'>
@@ -140,10 +140,11 @@ const List = (props) => {
 }
 
 List.propTypes = {
-  title: PropTypes.string,
   href: PropTypes.string,
-  global: PropTypes.object,
-  children: PropTypes.arrayOf(PropTypes.node).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node)
+  ])
 }
 
 export default List

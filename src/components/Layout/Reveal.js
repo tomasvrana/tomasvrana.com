@@ -323,12 +323,18 @@ const Reveal = (props) => {
 Box.propTypes = {
   lang: PropTypes.string,
   introVal: PropTypes.number,
-  children: PropTypes.children
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node)
+  ])
 }
 
 Reveal.propTypes = {
   introVal: PropTypes.number,
-  children: PropTypes.children
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node)
+  ])
 }
 
 export default Reveal

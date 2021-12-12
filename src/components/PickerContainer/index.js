@@ -58,15 +58,6 @@ const PickerContainer = () => (
                 </div>
               </LanguageContainer>
             </MediaQuery>
-            <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
-              {toggle &&
-                <LanguageContainer className='mobile'>
-                  <div>
-                    <LanguagePicker />
-                  </div>
-                </LanguageContainer>
-              }
-            </MediaQuery>
           </Fragment>
         )}
       </MobileNavToggleConsumer>

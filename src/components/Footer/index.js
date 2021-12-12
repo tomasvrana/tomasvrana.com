@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { MobileNavToggleConsumer } from '../../state'
 import Menu from '../Header/Menu'
 import Query from '../Global/Query'
 import Reveal from '../Layout/Reveal'
+import LanguagePicker from '../PickerContainer/LanguagePicker'
 
 const Container = styled.footer`
   width: 100%;
@@ -35,17 +37,22 @@ const Container = styled.footer`
     text-align:center;
   }
 
-  &.home {
+  &.home, &.nav-toggled {
     position:absolute;
     bottom:0;
     left:0;
     max-width: 100%;
     width:100%;
     color:white;
-    z-index:5;
+    z-index:15;
     .left,.right{
       opacity:.5;
     }
+  }
+
+  .lang-picker{
+    margin-bottom:4rem;
+    font-size:180%;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -56,7 +63,7 @@ const Container = styled.footer`
     .right {
       text-align:center;
     }
-    &.home {
+    &.home, &.nav-toggled {
       .menu {
         display:block;
         margin:-1rem 0 3rem 0;
@@ -77,23 +84,30 @@ const Container = styled.footer`
 
 const Footer = (props) => {
   return (
-    <Fragment>
-      <Query
-        render={({ frontmatter }) => (
-          <Container className={`${(props.home) ? 'home' : ''}`}>
-            {props.home &&
-              <Menu />
-            }
-            <div className='left'>
-              2022 &copy; <Reveal>{frontmatter.footer.left}</Reveal>
-            </div>
-            <div className='right'>
-              <Reveal>{frontmatter.footer.rights}</Reveal>
-            </div>
-          </Container>
-        )}
-      />
-    </Fragment>
+    <MobileNavToggleConsumer>
+      {({ toggle }) => (
+        <Fragment>
+          <Query
+            render={({ frontmatter }) => (
+              <Container className={`${(props.home) ? 'home' : ''} ${(toggle) ? 'nav-toggled' : ''}`}>
+                {(props.home || toggle) &&
+                  <Fragment>
+                    <Menu />
+                    <LanguagePicker />
+                  </Fragment>
+                }
+                <div className='left'>
+                  2022 &copy; <Reveal>{frontmatter.footer.left}</Reveal>
+                </div>
+                <div className='right'>
+                  <Reveal>{frontmatter.footer.rights}</Reveal>
+                </div>
+              </Container>
+            )}
+          />
+        </Fragment>
+      )}
+    </MobileNavToggleConsumer>
   )
 }
 

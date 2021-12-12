@@ -9,9 +9,7 @@ export default () => (
     render={({ frontmatter }) => (
       <Fragment>
         <Title><Reveal>{frontmatter.content.title}</Reveal></Title>
-        <List href={frontmatter.content.href}>
-          {frontmatter.content.projects}
-        </List>
+        <List href={frontmatter.content.href} children={frontmatter.content.projects} />
       </Fragment>
     )}
   />

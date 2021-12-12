@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { NavActiveConsumer } from '../../state'
+import Menu from '../Header/Menu'
 
 
 const Container = styled.div`
@@ -179,7 +180,6 @@ export default () => {
       {({ updateNavActive }) => (
         <Container>
           {updateNavActive('')}
-          <div id='info'></div>
           <div className={`bars ${(bool1) ? 'fast' : ''} ${(bool1A) ? 'in' : ''}`}></div>
           <div className={`barsback ${(bool2) ? 'fast' : ''} ${(bool2A) ? 'in' : ''}`}></div>
           <div className='grad'></div>

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { LanguageConsumer, NavActiveConsumer, ThemeConsumer } from '../../state'
+import { LanguageConsumer, NavActiveConsumer, ThemeConsumer, MobileNavToggleConsumer } from '../../state'
 import config from '../../config'
 import styled from 'styled-components'
 import MediaQuery from 'react-responsive'
@@ -7,8 +7,8 @@ import MediaQuery from 'react-responsive'
 const List = styled.ul`
   list-style-type:none;
   text-transform:uppercase;
-  width:200px;
-  text-align:right;
+  width:100%;
+  text-align:center;
 
   li {
     display:inline-block;
@@ -28,7 +28,7 @@ const List = styled.ul`
     }
   }
 
-  &.home button{
+  &.home button, &.nav-toggled button{
     color:white;
     &.active {
       border-bottom:1px solid white;
@@ -39,23 +39,27 @@ const List = styled.ul`
 export default () => (
   <ThemeConsumer>
     {({ theme }) => (
-      <NavActiveConsumer>
-        {({ navActive }) => (
-          <LanguageConsumer>
-            {({ lang, setLang }) => (
-              <List className={`${(navActive == '') ? 'home' : ''}`}>
-                {Object.keys(config.availableLanguages).map(key => (
-                  <li>
-                    <button className={(lang == key) ? 'active' : ''} href='#' onClick={lang => setLang(key)}>
-                        {key}
-                    </button>
-                  </li>
-                ))}
-              </List>
+      <MobileNavToggleConsumer>
+        {({ toggle }) => (
+          <NavActiveConsumer>
+            {({ navActive }) => (
+              <LanguageConsumer>
+                {({ lang, setLang }) => (
+                  <List className={`lang-picker ${(navActive == '') ? 'home' : ''} ${(toggle) ? 'nav-toggled' : ''}`}>
+                    {Object.keys(config.availableLanguages).map(key => (
+                      <li>
+                        <button className={(lang == key) ? 'active' : ''} href='#' onClick={lang => setLang(key)}>
+                            {key}
+                        </button>
+                      </li>
+                    ))}
+                  </List>
+                )}
+              </LanguageConsumer>
             )}
-          </LanguageConsumer>
+          </NavActiveConsumer>
         )}
-      </NavActiveConsumer>
+      </MobileNavToggleConsumer>
     )}
   </ThemeConsumer>
 )
