@@ -8,7 +8,6 @@ const List = styled.ul`
   list-style-type:none;
   text-transform:uppercase;
   width:100%;
-  text-align:center;
 
   li {
     display:inline-block;
@@ -29,6 +28,7 @@ const List = styled.ul`
   }
 
   &.home button, &.nav-toggled button{
+    text-align:center;
     color:white;
     &.active {
       border-bottom:1px solid white;

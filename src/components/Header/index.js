@@ -275,15 +275,18 @@ const Container = styled.header`
   }
 
   .mobile-nav-pop{
-    background:#555;
+    background:#333;
     position:fixed;
-    top:0;
+    top:-100vh;
     left:0;
     width:100%;
     height:100%;
-    color:white;
     z-index:30;
     text-align:center;
+    transition:top .25s ease;
+    &.on {
+      top:0;
+    }
     ul.menu {
       @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
         display:block;
@@ -413,11 +416,9 @@ export default () => {
                       </MediaQuery>
                       <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
                         <button className={`mobile-nav-toggle ${(toggle) ? 'on' : 'off'} ${(navActive == '') ? 'home' : ''}`} onClick={() => toggleMobileNav()}><span className='bar bar-0'></span><span className='bar bar-1'></span><span className='bar bar-2'></span></button>
-                        {toggle &&
-                          <div className='mobile-nav-pop'>
-                            <Menu />
-                          </div>
-                        }
+                        <div className={`mobile-nav-pop ${(toggle) ? 'on' : 'off'}`}>
+                          <Menu />
+                        </div>
                       </MediaQuery>
                     </Container>
                   )}

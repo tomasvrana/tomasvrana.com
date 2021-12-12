@@ -53,6 +53,7 @@ const Container = styled.footer`
   .lang-picker{
     margin-bottom:4rem;
     font-size:180%;
+    display:none;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -63,6 +64,10 @@ const Container = styled.footer`
     .right {
       text-align:center;
     }
+    .lang-picker{
+      display:block;
+      text-align:center;
+    }  
     &.home, &.nav-toggled {
       .menu {
         display:block;

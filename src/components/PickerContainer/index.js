@@ -9,8 +9,8 @@ const LanguageContainer = styled.div`
   z-index: 20;
   width:10rem;
   top: 0;
-  right: 30px;
-
+  right:10px;
+  
   width: 100%;
   max-width: 17rem;
   min-width: 12rem;
@@ -19,7 +19,10 @@ const LanguageContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+  ul {
+    text-align: right;
 
+  }
   &.mobile {
     top: auto;
     bottom:0;
