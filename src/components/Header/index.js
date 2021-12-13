@@ -77,29 +77,6 @@ const Container = styled.header`
         }
       }
     }
-    @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
-      li {
-        margin:0 1em;
-      }
-      display:block;
-      top:20rem;
-      text-align:center;
-      font-size:1em;
-      margin:0;
-      width:100%;
-      line-height:3;
-      left:0;
-      li {
-        display:block;
-        &.item-2 {
-          display:none;
-        }
-        a {
-          color:white;
-        }
-      }
-      
-    }
   }
 
   .logo {
@@ -287,16 +264,37 @@ const Container = styled.header`
     &.on {
       top:0;
     }
+    &.home {
+      top:0;
+      background:transparent;
+    }
     ul.menu {
       @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
         display:block;
       }
+     
+      display:block;
+      top:24vh;
+      text-align:center;
+      font-size:1em;
+      margin:0;
+      width:100%;
+      line-height:2;
+      left:0;      
       width:100%;
       li {
-        padding:1em 0;
+        padding:.5rem 0;
+        margin:0 1em;
+        display:block;
+        &.item-2 {
+          display:none;
+        }
         a {
           color:white;
           padding:1em;
+          &.active {
+            background:transparent;
+          }
         }
       }
     }
@@ -353,8 +351,9 @@ const Container = styled.header`
     }
     &.home {
       background:transparent;
+      right:-10rem;
       .bar {
-        background:#fff;
+        background:transparent;
       }
     }
   }
@@ -416,7 +415,7 @@ export default () => {
                       </MediaQuery>
                       <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
                         <button className={`mobile-nav-toggle ${(toggle) ? 'on' : 'off'} ${(navActive == '') ? 'home' : ''}`} onClick={() => toggleMobileNav()}><span className='bar bar-0'></span><span className='bar bar-1'></span><span className='bar bar-2'></span></button>
-                        <div className={`mobile-nav-pop ${(toggle) ? 'on' : 'off'}`}>
+                        <div className={`mobile-nav-pop ${(toggle) ? 'on' : 'off'} ${(navActive == '') ? 'home' : ''}`}>
                           <Menu />
                         </div>
                       </MediaQuery>

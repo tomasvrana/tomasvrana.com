@@ -54,6 +54,15 @@ const Container = styled.footer`
     margin-bottom:4rem;
     font-size:180%;
     display:none;
+    animation:langin 6s ease;
+  }
+  @keyframes langin {
+    0%,60% {
+      opacity:0
+    }
+    100% {
+      opacity:1
+    }
   }
 
   @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
