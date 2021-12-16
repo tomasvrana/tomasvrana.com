@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Typing = (props) => {
   const [ out, setOut ] = useState('')
   const lettersa = 'abcdefghijklmnopqrstuvxyz ,.'
-  const letters = 'abcdefghijklmnopqrstuvxyz ,.ěščřžýáíéúů'
+  const letters = 'abcdefghijklmnopqrstuvxyz ,.ěščřžýáíéúů 0123456789'
   let mystr = props.children
   let typed = ''
   let l = 0
@@ -18,17 +18,12 @@ const Typing = (props) => {
 
   function rollText () {
     if(p < mystr.length){
-      toggle = !toggle;
-      if (toggle) {
-          aid = requestAnimationFrame(rollText);
-          return;
-      }
       typed = ''
       l++
       if(l >= arr.length){
         l = 0
       }
-      if(myarr[p] == arr[l]){
+      if(myarr[p].toLowerCase() == arr[l].toLowerCase()){
         p++
       }
       for(let i = 0; i < p; i++){
@@ -48,7 +43,7 @@ const Typing = (props) => {
     for(let i = 0; i < myarr.length; i++){
       ll[i] = Math.round(Math.random() * myarr.length)
     }
-    revealText()
+    rollText()
   }
 
   function revealText () {

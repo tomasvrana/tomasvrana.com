@@ -1,9 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { LanguageConsumer, NavActiveConsumer, ThemeConsumer } from '../../state'
+import { LanguageConsumer } from '../../state'
 
 const Container = styled.span`
+display:inline-block;
 .blur-1 {
   filter: blur(1px);
 }
@@ -69,7 +70,7 @@ const Container = styled.span`
 }
 
 span span {
-  transition:opacity 8s ease;
+  transition:opacity 8s ease, width 2s ease;
 }
 .glitch{
   animation: glitchblur 3s ease 0s;
@@ -94,32 +95,31 @@ span span {
 `
 
 const Box = (props) => {
-  const [ blurTimer, setBlurTimer ] = useState([])
-  const [ blurOffset, setBlurOffset ] = useState([])
+  const [ blurr, setBlurr ] = useState({})
+  const [ hov, sethov ] = useState(0)
   const [ outArr, setOutArr ] = useState([])
   const [ glitchIndex, setGlitchIndex ] = useState([])
-  const [ blurIndex, setBlurIndex ] = useState([])
-  const [ blurBool, setBlurBool ] = useState([])
-  const [ blurTime, setBlurTime ] = useState([])
   const [ glitchBool, setGlitchBool ] = useState([])
   let letters = `abcdefghijklmnopqrstuvwxyz-@,.' ()ěščřžýáíéúů:0123456789`
   if(props.lang == 'en'){
     letters = `abcdefghijklmnopqrstuvwxyz-@,.' ():0123456789`
   }
   let l = 0
-  let bl = []
   let ll = []
-  let blurOffsetVar = []
   let block = false
-  if(props.children != null){
+  if(props.children != null && props.children != undefined){
     block = props.children.split(/\r?\n/)
   }
   let starts = []
   let pause = Math.floor(Math.random() * 1000) + 200
   let glitch = []
-  let blur = []
-  let blurB = []
-  let blurT = []
+  let bluring = {
+    index: [],
+    bool: [],
+    time: [],
+    offset: [],
+    counter: []
+  }
   let intro = []
   let rolling = []
   let rollingT = []
@@ -133,19 +133,19 @@ const Box = (props) => {
       myarr[b] = block[b].split('')
       pause = Math.floor(Math.random() * (((myarr[b].length < 100) ? (100 - myarr[b].length) : 1) * 100)) + 100
       glitch[b] = false
-      blurB[b] = false
       ll[b] = []
       starts[b] = []
       intro[b] = []
       rolling[b] = []
       rollingT[b] = []
       glitchpos[b] = Math.floor(Math.random() * myarr[b].length)
-      blur[b]= Math.floor(Math.random() * myarr[b].length)
-      blurT[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
-      bl[b] = 0
+      bluring.counter[b] = 0 
+      bluring.bool[b] = false
+      bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
+      bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
       for(let i = 0; i < myarr[b].length; i++){
         ll[b][i] = Math.floor(Math.random() * arr.length)
-        starts[b][i] = Math.floor(Math.random() * 100) + 10
+        starts[b][i] = 5
         if(props.introVal){
           starts[b][i] = Math.floor(Math.random() * props.introVal) + 10
         }
@@ -154,32 +154,89 @@ const Box = (props) => {
         rollingT[b][i] = Math.floor(Math.random() * 30) + ((myarr[b].length < 100) ? Math.abs(100 - myarr[b].length) : 0)
       }
     }
-    setBlurTime(blurT)
     setGlitchIndex(glitchpos)
     setGlitchBool(glitch)
-    setBlurBool(blurB)
+    setBlurr(bluring)
     revealText()
+  }
+
+  function hoverTextSetup () {
+    for(let b = 0; b < block.length; b++){
+      myarr[b] = block[b].split('')
+      pause = Math.floor(Math.random() * 5) + 1000
+      glitch[b] = false
+      ll[b] = []
+      starts[b] = []
+      intro[b] = []
+      rolling[b] = []
+      rollingT[b] = []
+      glitchpos[b] = Math.floor(Math.random() * myarr[b].length)
+      bluring.counter[b] = 0 
+      bluring.bool[b] = false
+      bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
+      bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
+      for(let i = 0; i < myarr[b].length; i++){
+        ll[b][i] = Math.floor(Math.random() * arr.length)
+        starts[b][i] = Math.floor(Math.random() * 5) + 1
+        if(props.introVal){
+          starts[b][i] = Math.floor(Math.random() * props.introVal) + 1
+        }
+        intro[b][i] = false
+        rolling[b][i] = false
+        rollingT[b][i] = Math.floor(Math.random() * 5)
+      }
+    }
+    sethov(hoverCount)
+    setGlitchIndex(glitchpos)
+    setGlitchBool(glitch)
+    setBlurr(bluring)
+    revealText()
+  }
+
+  function rollText () {
+    if(p < mystr.length){
+      typed = ''
+      l++
+      if(l >= arr.length){
+        l = 0
+      }
+      if(myarr[p].toLowerCase() == arr[l].toLowerCase()){
+        p++
+      }
+      for(let i = 0; i < p; i++){
+        typed += myarr[i]
+      }
+      setOut(typed + arr[l])
+      aid = requestAnimationFrame(rollText);
+    }else{
+      if(p == mystr.length){
+        setOut(typed)
+      }
+      cancelAnimationFrame(aid)
+    }
   }
 
   function revealText () {
     l++
+    if(hovered){
+      hoverCount++
+    }
     let typed = []
     for(let b = 0; b < block.length; b++){
       if(block[b].length > 1 || block[b].length != undefined){
-        bl[b]++    
-        blurOffsetVar[b] = Math.floor(Math.random() * 5)
-        setBlurOffset(blurOffsetVar)
+        bluring.counter[b]++    
+        bluring.offset[b] = Math.floor(Math.random() * 5)
 
-        if(bl[b] == blurT[b]){
-          if(blurB[b]){
-            blurT[b] = Math.floor(Math.random() * 20) + 3
-            bl[b] = 0
-            blurB[b] = false
+        if(bluring.counter[b] == bluring.time[b]){
+          if(bluring.bool[b]){
+            bluring.time[b] = Math.floor(Math.random() * 20) + 3
+            bluring.counter[b] = 0
+            bluring.bool[b] = false
           }else{
-            blur[b]= Math.floor(Math.random() * block[b].length)
-            blurT[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 20))
-            bl[b] = 0
-            blurB[b] = true
+            bluring.index[b]= Math.floor(Math.random() * block[b].length)
+            bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * (Math.floor(Math.random() * 20) + 4)))
+            bluring.counter[b] = 0
+            bluring.bool[b] = true
           }
         }
 
@@ -257,12 +314,35 @@ const Box = (props) => {
       }
     }
     setOutArr(resArr)
-    setBlurTimer(bl)
-    setBlurIndex(blur)
-    setBlurTime(blurT)
-    setBlurBool(blurB)
+    setBlurr(bluring)
+    sethov(hoverCount)
 
-    aid = requestAnimationFrame(revealText);
+    if(hovered && hoverCount > 110){
+      hovered = false
+      cancelAnimationFrame(aid)
+      block = props.children.split(/\r?\n/)
+      hoverTextSetup()
+      hoverCount = 0
+      l = 0
+    }else{
+      aid = requestAnimationFrame(revealText);
+    }
+  }
+
+  let hoverCount = 0
+  let hovered = false
+  function hover () {
+    if(props.hover != undefined){
+      if(hoverCount == 0){
+        if(!hovered){
+          block = props.hover.split(/\r?\n/)
+          hovered = true
+          cancelAnimationFrame(aid)
+          hoverTextSetup()
+          hoverCount++
+        }
+      }
+    }
   }
 
   useEffect(() => {
@@ -275,16 +355,16 @@ const Box = (props) => {
   }, [])
 
   return (
-    <Container>
+    <Container onMouseOver={() => hover()}>
       {outArr.map((line, index) => (
-        <Fragment>
+        <Fragment key={`line-${index}`}>
           {(outArr.length == 1)
           ?
             <span>
               {line.map((word, j) => (
-                <span>
+                <span key={`word-${j}`}>
                   {word.map((char, h) => (
-                    <span data-text={(char == '=') ? ' ' : char} className={`blurOffset-${blurOffset} ${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blurIndex[index] == h) ? 'blur' : ''}`}>
+                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blurr.index[index] == h) ? 'blur blurOffset-' + blurr.offset[index] : ''}`}>
                       {(char == '=') ? ' ' : char}
                     </span>
                   ))}
@@ -294,9 +374,9 @@ const Box = (props) => {
           :
             <p>
               {line.map((word, j) => (
-                <span>
+                <span key={`word-${j}`}>
                   {word.map((char, h) => (
-                    <span className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blurIndex[index] == h) ? 'blur' : ''}`}>
+                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blurr.index[index] == h) ? 'blur blurOffset-' + blurr.offset[index] : ''}`}>
                     {(char == '=') ? ' ' : char}
                     </span>
                   ))}
@@ -314,13 +394,14 @@ const Reveal = (props) => {
   return (
     <LanguageConsumer>
       {({ lang }) => (
-        <Box lang={lang} introVal={props.introVal}>{props.children}</Box>
+        <Box lang={lang} hover={props.hover} introVal={props.introVal}>{props.children}</Box>
       )}
     </LanguageConsumer>
   )
 }
 
 Box.propTypes = {
+  hover: PropTypes.string,
   lang: PropTypes.string,
   introVal: PropTypes.number,
   children: PropTypes.oneOfType([
@@ -330,6 +411,7 @@ Box.propTypes = {
 }
 
 Reveal.propTypes = {
+  hover: PropTypes.string,
   introVal: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.node,

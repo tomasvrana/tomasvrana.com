@@ -16,6 +16,7 @@ const Query = ({ render }) => (
                   frontmatter {
                     header {
                       title
+                      subtitle
                       navigation {
                         title
                         href

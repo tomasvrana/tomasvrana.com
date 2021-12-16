@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react'
 import Query from './SpacesQuery'
 import List from './List'
-import Title from './TitleTag'
-import Reveal from '../Layout/Reveal'
+import Title from '../Layout/Title'
 
 export default () => (
   <Query
     render={({ frontmatter }) => (
       <Fragment>
-        <Title><Reveal>{frontmatter.content.title}</Reveal></Title>
+        <Title hover={frontmatter.content.title}>{frontmatter.content.title}</Title>
         <List href={frontmatter.content.href} children={frontmatter.content.projects} />
       </Fragment>
     )}

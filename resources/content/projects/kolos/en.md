@@ -9,14 +9,9 @@ content:
   media: Paint, steel, concrete
   year: 2019
   description: |
-    A path through the world of contextual transformation. Discover part of Ostrava
-    with a touch of subtropics. Where even technology lurks only as not to get
-    swallowed by nature. Subdue and rip out any progressive context. To root in,
-    to sprout, to grow and bloom. Those are the local laws which can bring life
-    even to the modern age.
-
+    A path through the world of contextual transformation. Discover part of Ostrava with a touch of subtropics. Where even technology lurks only as not to get swallowed by nature. Subdue and rip out any progressive context. To root in, to sprout, to grow and bloom. Those are the local laws which can bring life even to the modern age.
+    
     Installation is situated at several locations along the cycling route.
-
   location: Ostrava, CZ
   images:
     - src: /images/kolos/1.jpg

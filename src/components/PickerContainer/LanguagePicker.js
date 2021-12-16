@@ -47,7 +47,7 @@ export default () => (
                 {({ lang, setLang }) => (
                   <List className={`lang-picker ${(navActive == '') ? 'home' : ''} ${(toggle) ? 'nav-toggled' : ''}`}>
                     {Object.keys(config.availableLanguages).map(key => (
-                      <li>
+                      <li key={`langli-${key}`}>
                         <button className={(lang == key) ? 'active' : ''} href='#' onClick={lang => setLang(key)}>
                             {key}
                         </button>

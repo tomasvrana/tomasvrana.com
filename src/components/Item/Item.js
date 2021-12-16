@@ -2,10 +2,11 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Go from '../List/Go'
 import PropTypes from 'prop-types'
-import ReactMarkdown from 'react-markdown'
 import { NavActiveConsumer } from '../../state'
 import GlobalQuery from '../Global/Query'
+import Title from '../Layout/Title'
 import Reveal from '../Layout/Reveal'
+import Typing from '../Layout/Typing'
 
 const Container = styled.div`
 text-align:center;
@@ -171,8 +172,8 @@ const Item = (props) => {
           {({ navActive, updateNavActive }) => (
             <Container>
               {updateNavActive(props.content.parent)}
-              <h1><Reveal>{props.content.title}</Reveal></h1>
-              <small><Reveal>{subline}</Reveal></small>
+              <Title large>{props.content.title}</Title>
+              <small><Typing>{subline}</Typing></small>
               {props.content.cooperation &&
                 <div className='cooperation'>
                   <div><Reveal>{frontmatter.others.cooperation}</Reveal></div>

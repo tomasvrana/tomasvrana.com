@@ -38,7 +38,7 @@ const Container = styled.header`
       a {
         padding: 1rem 1.4rem;
         line-height:2;
-        background:rgba(0,0,0,0);
+        background:url(/images/bg.gif);
         transition: padding .2s ease,background .2s ease;
         &.active {
           @media screen and (min-width: 1200px) {
@@ -47,7 +47,7 @@ const Container = styled.header`
           @media screen and (min-width: 1000px) {
             padding-right:10rem;
           }
-          background:rgba(0,0,0,.05);
+          background:#eee;
         }
       }
       &.item-2 {
@@ -80,11 +80,12 @@ const Container = styled.header`
   }
 
   .logo {
-    padding:.5rem 1.4rem;
-    background:rgba(255,255,255,0.5);
+    padding:.5rem 1.4rem 1.2rem 1.4rem;
+    background:url(/images/bggg.gif);
     display:inline-block;
     text-transform:uppercase;
     position:relative;
+    mix-blend-mode: color-burn;
     z-index:100;
     a {
       font-size:3em;
@@ -95,11 +96,17 @@ const Container = styled.header`
       animation: logoblur 8s ease 0s infinite;
       -webkit-animation: logoblur 8s ease 0s infinite;
       -moz-animation: logoblur 8s ease 0s infinite;
+      &:hover {
+        color:black
+      }
     }
     &.home {
       background:transparent;
       a {
         color:white;
+        &:hover {
+          color:white
+        }
       }
     }
     &.mobile-nav-on {
@@ -407,7 +414,7 @@ export default () => {
                     <Container>
                       <div className={`logo ${(navActive == '') ? 'home' : ''} ${(toggle) ? 'mobile-nav-on' : ''}`}>
                         <Link href="/" onClick={() => toggle && toggleMobileNav()}>
-                          <Reveal>{frontmatter.header.title}</Reveal>
+                          <Reveal hover={frontmatter.header.subtitle}>{frontmatter.header.title}</Reveal>
                         </Link>
                       </div>
                       <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>

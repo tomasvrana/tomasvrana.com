@@ -141,10 +141,7 @@ const List = (props) => {
 
 List.propTypes = {
   href: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ])
+  children: PropTypes.array
 }
 
 export default List

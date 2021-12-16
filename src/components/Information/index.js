@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Query from './Query'
 import Link from '../Link'
-import Title from '../List/TitleTag'
+import Title from '../Layout/Title'
 import gflogo from '../../../resources/images/gf.svg'
 import { NavActiveConsumer } from '../../state'
 import Reveal from '../Layout/Reveal'
@@ -41,7 +41,7 @@ export default () => (
         {({ updateNavActive }) => (
           <Container>
             {updateNavActive(frontmatter.content.href)}
-            <Title><Reveal>{frontmatter.content.title}</Reveal></Title>
+            <Title>{frontmatter.content.title}</Title>
             <Desc><Reveal>{frontmatter.content.desc}</Reveal></Desc>
             <br />
             <br />
