@@ -15,7 +15,14 @@ export default () => {
               {({ navActive }) => (
                 <ul className={`menu ${(navActive == '') ? 'home' : ''} ${(toggle) ? 'nav-toggled' : ''}`}>
                   {frontmatter.header.navigation.map((item, index) => (
-                    <li className={`item-${index}`} key={`menuli-${index}`}><Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href} onClick={() => {(toggle) ? toggleMobileNav() : null}}><Reveal>{item.title}</Reveal></Link></li>
+                    <li className={`item-${index}`} key={`menuli-${index}`}>
+                      <Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href} onClick={() => {(toggle) ? toggleMobileNav() : null}}>
+                        {(item.subtitle)
+                          ? <Reveal hover={item.subtitle}>{item.title}</Reveal>
+                          : <Reveal>{item.title}</Reveal>
+                        }
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               )}

@@ -2,6 +2,7 @@
 title: En (English) home page content
 content:
   title: Nemocnice
+  subtitle: Nebo škola|Nebo kriminál
   type: Obraz
   parent: /images/
   back: Zpět

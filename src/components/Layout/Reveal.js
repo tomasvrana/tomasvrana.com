@@ -95,9 +95,10 @@ span span {
 `
 
 const Box = (props) => {
-  const [ blurr, setBlurr ] = useState({})
+  const [ blur, setBlur ] = useState({})
   const [ hov, sethov ] = useState(0)
-  const [ outArr, setOutArr ] = useState([])
+  const [ rewT, setRewT ] = useState([])
+  const [ out, setOut ] = useState([])
   const [ glitchIndex, setGlitchIndex ] = useState([])
   const [ glitchBool, setGlitchBool ] = useState([])
   let letters = `abcdefghijklmnopqrstuvwxyz-@,.' ()ěščřžýáíéúů:0123456789`
@@ -110,6 +111,11 @@ const Box = (props) => {
   if(props.children != null && props.children != undefined){
     block = props.children.split(/\r?\n/)
   }
+  let hoverblock = false
+  if(props.hover != null && props.hover != undefined){
+    hoverblock = props.hover.split(/\|/)
+  }
+  let revealing = false
   let starts = []
   let pause = Math.floor(Math.random() * 1000) + 200
   let glitch = []
@@ -124,11 +130,29 @@ const Box = (props) => {
   let rolling = []
   let rollingT = []
   let glitchpos = []
-  let aid
-  const arr = letters.split('')
-  const myarr = []
+  let aid = 0
+
+  let rewTimer = 0
+  let rewNext = 0
+  let rewPeriod = 0
+  let erased = false
+  let rewIndex = []
+  let exrewriten = 0
+  let rewriten = 0
+  let typePos = []
+  let typing = false
+
+  let arr = letters.split('')
+  let myarr = []
+
+  function nextSetup () {
+    revealing = true
+    rewTimer = 0
+    rewNext = Math.floor(Math.random() * 2000) + 400
+  }
 
   function revealTextSetup () {
+    nextSetup()
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
       pause = Math.floor(Math.random() * (((myarr[b].length < 100) ? (100 - myarr[b].length) : 1) * 100)) + 100
@@ -156,14 +180,15 @@ const Box = (props) => {
     }
     setGlitchIndex(glitchpos)
     setGlitchBool(glitch)
-    setBlurr(bluring)
+    setBlur(bluring)
     revealText()
   }
 
-  function hoverTextSetup () {
+  function quickTextSetup () {
+    nextSetup()
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
-      pause = Math.floor(Math.random() * 5) + 1000
+      pause = Math.floor(Math.random() * 1000) + 2000
       glitch[b] = false
       ll[b] = []
       starts[b] = []
@@ -176,48 +201,164 @@ const Box = (props) => {
       bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
       bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
       for(let i = 0; i < myarr[b].length; i++){
-        ll[b][i] = Math.floor(Math.random() * arr.length)
-        starts[b][i] = Math.floor(Math.random() * 5) + 1
-        if(props.introVal){
-          starts[b][i] = Math.floor(Math.random() * props.introVal) + 1
-        }
+        ll[b][i] = 0
+        starts[b][i] = 0
         intro[b][i] = false
         rolling[b][i] = false
-        rollingT[b][i] = Math.floor(Math.random() * 5)
+        rollingT[b][i] = 0
       }
     }
-    sethov(hoverCount)
     setGlitchIndex(glitchpos)
     setGlitchBool(glitch)
-    setBlurr(bluring)
+    setBlur(bluring)
     revealText()
   }
 
-  function rollText () {
-    if(p < mystr.length){
-      typed = ''
-      l++
-      if(l >= arr.length){
-        l = 0
+
+  function doOutput (ar) {
+    let res = []
+    for(let b = 0; b < ar.length; b++){
+      res[b] = ar[b].split(' ')
+      for(let c = 0; c < res[b].length; c++){
+        res[b][c] = res[b][c].split('')
       }
-      if(myarr[p].toLowerCase() == arr[l].toLowerCase()){
-        p++
+    }
+    setOut(res)
+  }
+
+  function eraseText () {
+    revealing = false
+    erased = false
+    l = 0
+    if(block.length > 1){
+      for(let p = 0; p < 1; p++){
+        myarr[p] = block[rewriten - 1].split('')
+        rewIndex[p] = block[rewriten - 1].length
       }
-      for(let i = 0; i < p; i++){
-        typed += myarr[i]
-      }
-      setOut(typed + arr[l])
-      aid = requestAnimationFrame(rollText);
     }else{
-      if(p == mystr.length){
-        setOut(typed)
+      for(let p = 0; p < block.length; p++){
+        myarr[p] = block[p].split('')
+        rewIndex[p] = block[p].length
       }
-      cancelAnimationFrame(aid)
+    }
+
+    cancelAnimationFrame(aid)
+    eraseLoop()
+  }
+
+  function eraseLoop () {
+    let typed = []
+    for(let p = 0; p < block.length; p++){
+      let line = ''
+      for(let w = 0; w < rewIndex[p]; w++){
+        if(myarr[p][w] == ' '){
+          line += '='
+        }else{
+          line += myarr[p][w]
+        }
+      }
+      rewIndex[p]--
+      typed[p] = line
+    }
+    doOutput(typed)
+    let go = 0
+    for(let p = 0; p < block.length; p++){
+      if(rewIndex[p] > 0){
+        go++
+      }
+    }
+    if(go > 0){
+      aid = requestAnimationFrame(eraseLoop);
+    }else{
+      if(!erased){
+        erased = true
+        if(rewriten < (block.length + 1)){
+          typeText ()
+        }
+      }
     }
   }
 
+
+  function typeText () {
+    if(props.hover == null || props.children == undefined){
+      return
+    }
+    rewPeriod = Math.floor(Math.random() * 100) + 70
+    myarr = []
+    l = 0
+    revealing = false
+    typing = true
+    exrewriten = rewriten
+
+    block = props.hover.split(/\|/)
+    if(block[rewriten] != undefined){
+      for(let p = 0; p < block.length; p++){
+        myarr[p] = block[rewriten].split('')
+        typePos[p] = 1
+        ll[p] = 0
+      }
+    }else{
+      block = props.children.split(/\r?\n/)
+      for(let p = 0; p < block.length; p++){
+        myarr[p] = block[p].split('')
+        typePos[p] = 1
+        ll[p] = 0
+      }  
+    }
+    typeLoop()
+  }
+
+  function typeLoop () {
+    let typed = []
+    for(let p = 0; p < 1; p++){
+      let line = ''      
+      for(let w = 0; w < typePos[p]; w++){
+        if(arr[ll[p]].toLowerCase() == myarr[p][w].toLowerCase()){
+          if(typePos[p] < myarr[p].length){
+            typePos[p]++
+            ll[p] = Math.floor(Math.random() * arr.length)
+            //ll[p] = 0
+          }
+        }
+        if(myarr[p][w] == ' '){
+          line += '='
+        }else{
+          line += myarr[p][w]
+        }
+      }
+      if(typePos[p] == myarr[p].length){
+        typing = false
+        l++
+        if(rewriten == exrewriten){
+          rewriten++
+        }
+        typed[p] = line
+      }else{
+        typed[p] = line + arr[ll[p]]
+      }
+      ll[p]++
+      if(ll[p] >= arr.length){
+        ll[p] = 0
+      }
+    }
+    doOutput(typed)
+    if(l < rewPeriod){
+      aid = requestAnimationFrame(typeLoop)
+    }else{
+      if(rewriten < (block.length + 1)){
+        eraseText()
+      }else{
+        l = 0
+        quickTextSetup()
+      }
+    }
+  }
+
+
   function revealText () {
     l++
+    rewTimer++
     if(hovered){
       hoverCount++
     }
@@ -306,44 +447,41 @@ const Box = (props) => {
       }
     }
 
-    let resArr = []
-    for(let b = 0; b < typed.length; b++){
-      resArr[b] = typed[b].split(' ')
-      for(let c = 0; c < resArr[b].length; c++){
-        resArr[b][c] = resArr[b][c].split('')
-      }
-    }
-    setOutArr(resArr)
-    setBlurr(bluring)
+    doOutput(typed)
+    setBlur(bluring)
     sethov(hoverCount)
 
-    if(hovered && hoverCount > 110){
-      hovered = false
+    if(rewTimer == rewNext){
+      if(props.hover == null || props.children == undefined){
+        return
+      }
+      rewriten = 0
       cancelAnimationFrame(aid)
-      block = props.children.split(/\r?\n/)
-      hoverTextSetup()
-      hoverCount = 0
-      l = 0
+      eraseText()
     }else{
-      aid = requestAnimationFrame(revealText);
+      if(revealing){
+        aid = window.requestAnimationFrame(revealText);
+      }else{
+        //window.cancelAnimationFrame(aid)
+      }
     }
   }
 
   let hoverCount = 0
   let hovered = false
-  function hover () {
-    if(props.hover != undefined){
-      if(hoverCount == 0){
-        if(!hovered){
-          block = props.hover.split(/\r?\n/)
-          hovered = true
-          cancelAnimationFrame(aid)
-          hoverTextSetup()
-          hoverCount++
-        }
-      }
-    }
-  }
+  // function hover () {
+  //   if(props.hover != undefined){
+  //     if(hoverCount == 0){
+  //       if(!hovered){
+  //         block = props.hover.split(/\r?\n/)
+  //         hovered = true
+  //         cancelAnimationFrame(aid)
+  //         hoverTextSetup()
+  //         hoverCount++
+  //       }
+  //     }
+  //   }
+  // }
 
   useEffect(() => {
     if(block != false){
@@ -355,16 +493,18 @@ const Box = (props) => {
   }, [])
 
   return (
-    <Container onMouseOver={() => hover()}>
-      {outArr.map((line, index) => (
+    <Container
+    onMouseOver={() => props.hover && eraseText()}
+    >
+      {out.map((line, index) => (
         <Fragment key={`line-${index}`}>
-          {(outArr.length == 1)
+          {(out.length == 1)
           ?
             <span>
               {line.map((word, j) => (
                 <span key={`word-${j}`}>
                   {word.map((char, h) => (
-                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blurr.index[index] == h) ? 'blur blurOffset-' + blurr.offset[index] : ''}`}>
+                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blur.index[index] == h) ? 'blur blurOffset-' + blur.offset[index] : ''}`}>
                       {(char == '=') ? ' ' : char}
                     </span>
                   ))}
@@ -376,7 +516,7 @@ const Box = (props) => {
               {line.map((word, j) => (
                 <span key={`word-${j}`}>
                   {word.map((char, h) => (
-                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blurr.index[index] == h) ? 'blur blurOffset-' + blurr.offset[index] : ''}`}>
+                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blur.index[index] == h) ? 'blur blurOffset-' + blur.offset[index] : ''}`}>
                     {(char == '=') ? ' ' : char}
                     </span>
                   ))}

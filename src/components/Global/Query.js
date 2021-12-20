@@ -19,6 +19,7 @@ const Query = ({ render }) => (
                       subtitle
                       navigation {
                         title
+                        subtitle
                         href
                       }
                     }

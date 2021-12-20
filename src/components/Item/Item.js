@@ -172,7 +172,7 @@ const Item = (props) => {
           {({ navActive, updateNavActive }) => (
             <Container>
               {updateNavActive(props.content.parent)}
-              <Title large>{props.content.title}</Title>
+              <Title large hover={(props.content.subtitle) && props.content.subtitle}>{props.content.title}</Title>
               <small><Typing>{subline}</Typing></small>
               {props.content.cooperation &&
                 <div className='cooperation'>

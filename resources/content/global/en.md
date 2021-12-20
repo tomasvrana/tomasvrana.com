@@ -2,7 +2,7 @@
 title: En (English) footer content
 header:
   title: TV
-  subtitle: Tomas Vrana
+  subtitle: Tom|Vrana
   navigation:
     - title: Images
       href: /images/
@@ -19,7 +19,7 @@ others:
   back: Back
   more: See more
 footer:
-  left: TOMAS VRANA
+  left: TOMAS VRANA, Made in Gatsby
   rights: All rights reserved
   info: Information
   infolink: /information/
