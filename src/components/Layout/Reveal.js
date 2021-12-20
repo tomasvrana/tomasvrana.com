@@ -112,8 +112,8 @@ const Box = (props) => {
     block = props.children.split(/\r?\n/)
   }
   let hoverblock = false
-  if(props.hover != null && props.hover != undefined){
-    hoverblock = props.hover.split(/\|/)
+  if(props.rewrite != null && props.rewrite != undefined){
+    hoverblock = props.rewrite.split(/\|/)
   }
   let revealing = false
   let starts = []
@@ -155,7 +155,7 @@ const Box = (props) => {
     nextSetup()
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
-      pause = Math.floor(Math.random() * (((myarr[b].length < 100) ? (100 - myarr[b].length) : 1) * 100)) + 100
+      pause = Math.floor(Math.random() * 1000) + 500
       glitch[b] = false
       ll[b] = []
       starts[b] = []
@@ -186,9 +186,10 @@ const Box = (props) => {
 
   function quickTextSetup () {
     nextSetup()
+    l = 0
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
-      pause = Math.floor(Math.random() * 1000) + 2000
+      pause = Math.floor(Math.random() * 1000) + 500
       glitch[b] = false
       ll[b] = []
       starts[b] = []
@@ -281,17 +282,17 @@ const Box = (props) => {
 
 
   function typeText () {
-    if(props.hover == null || props.children == undefined){
+    if(props.rewrite == null || props.children == undefined){
       return
     }
-    rewPeriod = Math.floor(Math.random() * 100) + 70
+    rewPeriod = Math.floor(Math.random() * 50) + 70
     myarr = []
     l = 0
     revealing = false
     typing = true
     exrewriten = rewriten
 
-    block = props.hover.split(/\|/)
+    block = props.rewrite.split(/\|/)
     if(block[rewriten] != undefined){
       for(let p = 0; p < block.length; p++){
         myarr[p] = block[rewriten].split('')
@@ -409,7 +410,7 @@ const Box = (props) => {
               }
               if(glitch[b]){
                 glitch[b] = false
-                pause = Math.floor(Math.random() * (((myarr[b].length < 100) ? (100 - myarr[b].length) : 1) * 100)) + 100
+                pause = Math.floor(Math.random() * 1000) + 500
                 let newArr = [...glitchBool]
                 newArr[b] = false
                 setGlitchBool(newArr)
@@ -452,7 +453,7 @@ const Box = (props) => {
     sethov(hoverCount)
 
     if(rewTimer == rewNext){
-      if(props.hover == null || props.children == undefined){
+      if(props.rewrite == null || props.children == undefined){
         return
       }
       rewriten = 0
@@ -470,10 +471,10 @@ const Box = (props) => {
   let hoverCount = 0
   let hovered = false
   // function hover () {
-  //   if(props.hover != undefined){
+  //   if(props.rewrite != undefined){
   //     if(hoverCount == 0){
   //       if(!hovered){
-  //         block = props.hover.split(/\r?\n/)
+  //         block = props.rewrite.split(/\r?\n/)
   //         hovered = true
   //         cancelAnimationFrame(aid)
   //         hoverTextSetup()
@@ -493,9 +494,7 @@ const Box = (props) => {
   }, [])
 
   return (
-    <Container
-    onMouseOver={() => props.hover && eraseText()}
-    >
+    <Container>
       {out.map((line, index) => (
         <Fragment key={`line-${index}`}>
           {(out.length == 1)
@@ -534,14 +533,14 @@ const Reveal = (props) => {
   return (
     <LanguageConsumer>
       {({ lang }) => (
-        <Box lang={lang} hover={props.hover} introVal={props.introVal}>{props.children}</Box>
+        <Box lang={lang} rewrite={props.rewrite} rewrite={props.rewrite} introVal={props.introVal}>{props.children}</Box>
       )}
     </LanguageConsumer>
   )
 }
 
 Box.propTypes = {
-  hover: PropTypes.string,
+  rewrite: PropTypes.string,
   lang: PropTypes.string,
   introVal: PropTypes.number,
   children: PropTypes.oneOfType([
@@ -551,7 +550,7 @@ Box.propTypes = {
 }
 
 Reveal.propTypes = {
-  hover: PropTypes.string,
+  rewrite: PropTypes.string,
   introVal: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.node,

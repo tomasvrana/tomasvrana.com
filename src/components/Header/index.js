@@ -414,7 +414,7 @@ export default () => {
                     <Container>
                       <div className={`logo ${(navActive == '') ? 'home' : ''} ${(toggle) ? 'mobile-nav-on' : ''}`}>
                         <Link href="/" onClick={() => toggle && toggleMobileNav()}>
-                          <Reveal hover={frontmatter.header.subtitle}>{frontmatter.header.title}</Reveal>
+                          <Reveal rewrite={frontmatter.header.subtitle}>{frontmatter.header.title}</Reveal>
                         </Link>
                       </div>
                       <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>

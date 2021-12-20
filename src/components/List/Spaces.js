@@ -7,7 +7,7 @@ export default () => (
   <Query
     render={({ frontmatter }) => (
       <Fragment>
-        <Title hover={frontmatter.content.title}>{frontmatter.content.title}</Title>
+        <Title rewrite={frontmatter.content.title}>{frontmatter.content.title}</Title>
         <List href={frontmatter.content.href} children={frontmatter.content.projects} />
       </Fragment>
     )}
