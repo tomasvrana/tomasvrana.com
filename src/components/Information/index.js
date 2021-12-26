@@ -41,13 +41,13 @@ export default () => (
         {({ updateNavActive }) => (
           <Container>
             {updateNavActive(frontmatter.content.href)}
-            <Title>{frontmatter.content.title}</Title>
-            <Desc><Reveal>{frontmatter.content.desc}</Reveal></Desc>
+            <Title rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
+            <Desc><Reveal method='quicktype'>{frontmatter.content.desc}</Reveal></Desc>
             <br />
             <br />
             <Desc><Reveal>{frontmatter.content.member}</Reveal></Desc>
             <Logo><Link href="//gottfrei.com" target="_blank"><img src={gflogo} alt='' width='150' /></Link></Logo>
-            <Contact><Reveal>{frontmatter.content.contact}</Reveal></Contact>
+            <Contact><Reveal method='quicktype'>{frontmatter.content.contact}</Reveal></Contact>
           </Container>
         )}
       </NavActiveConsumer>

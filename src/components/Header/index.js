@@ -38,8 +38,11 @@ const Container = styled.header`
       a {
         padding: 1rem 1.4rem;
         line-height:2;
-        background:url(/images/bg.gif);
         transition: padding .2s ease,background .2s ease;
+        @media screen and (min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+          background:url(/images/bg.gif);
+        }
+       
         &.active {
           @media screen and (min-width: 1200px) {
             padding-right:15rem;
@@ -85,8 +88,7 @@ const Container = styled.header`
     display:inline-block;
     text-transform:uppercase;
     position:relative;
-    mix-blend-mode: color-burn;
-    z-index:100;
+    z-index:200;
     a {
       font-size:3em;
       line-height:1;
@@ -110,6 +112,7 @@ const Container = styled.header`
       }
     }
     &.mobile-nav-on {
+      position:fixed;
       background:transparent;
       a {
         color:white;

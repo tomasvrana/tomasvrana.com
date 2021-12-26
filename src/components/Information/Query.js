@@ -16,6 +16,7 @@ const Query = ({ render }) => (
                   frontmatter {
                     content {
                       title
+                      subtitle
                       desc
                       member
                       contact

@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 import { MobileNavToggleConsumer } from '../../state'
 import Menu from '../Header/Menu'
 import Query from '../Global/Query'
+import Link from '../Link'
 import Reveal from '../Layout/Reveal'
 import LanguagePicker from '../PickerContainer/LanguagePicker'
+import { GrGithub } from 'react-icons/gr'
 
 const Container = styled.footer`
   width: 100%;
@@ -38,7 +40,7 @@ const Container = styled.footer`
   }
 
   &.home, &.nav-toggled {
-    position:absolute;
+    position:fixed;
     bottom:0;
     left:0;
     max-width: 100%;
@@ -111,7 +113,7 @@ const Footer = (props) => {
                   </Fragment>
                 }
                 <div className='left'>
-                  2022 &copy; <Reveal>{frontmatter.footer.left}</Reveal>
+                  <Reveal>2022</Reveal> &copy; <Reveal>{frontmatter.footer.left}</Reveal> <Link href='#'><GrGithub /></Link>
                 </div>
                 <div className='right'>
                   <Reveal>{frontmatter.footer.rights}</Reveal>

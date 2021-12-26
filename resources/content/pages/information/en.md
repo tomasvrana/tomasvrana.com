@@ -2,6 +2,7 @@
 title: En (English) home page content
 content:
   title: INFORMATION
+  subtitle: ABOUT ME|CONTACT
   href: /information/
   desc: |
     In his creative process TV is seeking contextual experimentation. He blends contrary ways and tends to test sustainability even of a basic elements like eyes or ceiling. And then you add some colours.

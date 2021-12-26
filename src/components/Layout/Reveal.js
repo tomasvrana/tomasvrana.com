@@ -96,8 +96,6 @@ span span {
 
 const Box = (props) => {
   const [ blur, setBlur ] = useState({})
-  const [ hov, sethov ] = useState(0)
-  const [ rewT, setRewT ] = useState([])
   const [ out, setOut ] = useState([])
   const [ glitchIndex, setGlitchIndex ] = useState([])
   const [ glitchBool, setGlitchBool ] = useState([])
@@ -111,9 +109,9 @@ const Box = (props) => {
   if(props.children != null && props.children != undefined){
     block = props.children.split(/\r?\n/)
   }
-  let hoverblock = false
+  let rewriteblock = false
   if(props.rewrite != null && props.rewrite != undefined){
-    hoverblock = props.rewrite.split(/\|/)
+    rewriteblock = props.rewrite.split(/\|/)
   }
   let revealing = false
   let starts = []
@@ -139,6 +137,7 @@ const Box = (props) => {
   let rewIndex = []
   let exrewriten = 0
   let rewriten = 0
+  let rewriting = false
   let typePos = []
   let typing = false
 
@@ -151,7 +150,7 @@ const Box = (props) => {
     rewNext = Math.floor(Math.random() * 2000) + 400
   }
 
-  function revealTextSetup () {
+  function rollAll () {
     nextSetup()
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
@@ -163,10 +162,7 @@ const Box = (props) => {
       rolling[b] = []
       rollingT[b] = []
       glitchpos[b] = Math.floor(Math.random() * myarr[b].length)
-      bluring.counter[b] = 0 
-      bluring.bool[b] = false
-      bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
-      bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
+      blurVars(b, myarr)
       for(let i = 0; i < myarr[b].length; i++){
         ll[b][i] = Math.floor(Math.random() * arr.length)
         starts[b][i] = 5
@@ -181,11 +177,12 @@ const Box = (props) => {
     setGlitchIndex(glitchpos)
     setGlitchBool(glitch)
     setBlur(bluring)
-    revealText()
+    rollAllLoop()
   }
 
-  function quickTextSetup () {
+  function rollAllQuick () {
     nextSetup()
+    rewriting = false
     l = 0
     for(let b = 0; b < block.length; b++){
       myarr[b] = block[b].split('')
@@ -197,12 +194,9 @@ const Box = (props) => {
       rolling[b] = []
       rollingT[b] = []
       glitchpos[b] = Math.floor(Math.random() * myarr[b].length)
-      bluring.counter[b] = 0 
-      bluring.bool[b] = false
-      bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
-      bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
+      blurVars(b, myarr)
       for(let i = 0; i < myarr[b].length; i++){
-        ll[b][i] = 0
+        ll[b][i] = Math.floor(Math.random() * arr.length)
         starts[b][i] = 0
         intro[b][i] = false
         rolling[b][i] = false
@@ -212,34 +206,64 @@ const Box = (props) => {
     setGlitchIndex(glitchpos)
     setGlitchBool(glitch)
     setBlur(bluring)
-    revealText()
+    rollAllLoop()
+  }
+
+  function blurVars (b, myarr) {
+    bluring.counter[b] = 0 
+    bluring.bool[b] = false
+    bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
+    bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
+  }
+
+  function blurLoop (b) {
+    bluring.counter[b]++    
+    bluring.offset[b] = Math.floor(Math.random() * 5)
+
+    if(bluring.counter[b] == bluring.time[b]){
+      if(bluring.bool[b]){
+        bluring.time[b] = Math.floor(Math.random() * 20) + 3
+        bluring.counter[b] = 0
+        bluring.bool[b] = false
+      }else{
+        bluring.index[b]= Math.floor(Math.random() * block[b].length)
+        bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * (Math.floor(Math.random() * 20) + 4)))
+        bluring.counter[b] = 0
+        bluring.bool[b] = true
+      }
+    }
   }
 
 
   function doOutput (ar) {
     let res = []
     for(let b = 0; b < ar.length; b++){
-      res[b] = ar[b].split(' ')
-      for(let c = 0; c < res[b].length; c++){
-        res[b][c] = res[b][c].split('')
+      if(ar[b] != undefined && ar[b].length > 0){
+        res[b] = ar[b].split(' ')
+        for(let c = 0; c < res[b].length; c++){
+          res[b][c] = res[b][c].split('')
+        }
       }
     }
     setOut(res)
   }
 
   function eraseText () {
-    revealing = false
     erased = false
     l = 0
-    if(block.length > 1){
+    let altblock = block
+    if(rewriting && rewriteblock[rewriten - 1] != undefined){
+      altblock = rewriteblock
+    }
+    if(altblock.length > 1){
       for(let p = 0; p < 1; p++){
-        myarr[p] = block[rewriten - 1].split('')
-        rewIndex[p] = block[rewriten - 1].length
+        myarr[p] = altblock[rewriten - 1].split('')
+        rewIndex[p] = altblock[rewriten - 1].length
       }
     }else{
-      for(let p = 0; p < block.length; p++){
-        myarr[p] = block[p].split('')
-        rewIndex[p] = block[p].length
+      for(let p = 0; p < altblock.length; p++){
+        myarr[p] = altblock[p].split('')
+        rewIndex[p] = altblock[p].length
       }
     }
 
@@ -274,23 +298,46 @@ const Box = (props) => {
       if(!erased){
         erased = true
         if(rewriten < (block.length + 1)){
-          typeText ()
+          rewriteText ()
         }
       }
     }
   }
 
+  let rewpar = 1
+  let rowDone = []
+
+
 
   function typeText () {
-    if(props.rewrite == null || props.children == undefined){
-      return
+    myarr = []
+    typePos = []
+    l = 0
+    revealing = false
+    typing = true
+
+    if(!block){
+      block = props.children.split(/\r?\n/)
     }
+    for(let p = 0; p < block.length; p++){
+      myarr[p] = block[p].split('')
+      typePos[p] = 1
+      blurVars(p, myarr)
+      rowDone[p] = false
+      ll[p] = 0
+    }
+    typeLoop()
+  }
+
+  function rewriteText () {
+    typePos = []
     rewPeriod = Math.floor(Math.random() * 50) + 70
     myarr = []
     l = 0
     revealing = false
     typing = true
     exrewriten = rewriten
+    rewriting = true
 
     block = props.rewrite.split(/\|/)
     if(block[rewriten] != undefined){
@@ -307,80 +354,92 @@ const Box = (props) => {
         ll[p] = 0
       }  
     }
+
     typeLoop()
   }
 
   function typeLoop () {
     let typed = []
-    for(let p = 0; p < 1; p++){
-      let line = ''      
-      for(let w = 0; w < typePos[p]; w++){
-        if(arr[ll[p]].toLowerCase() == myarr[p][w].toLowerCase()){
-          if(typePos[p] < myarr[p].length){
-            typePos[p]++
-            ll[p] = Math.floor(Math.random() * arr.length)
-            //ll[p] = 0
+    let loopTop = 1
+    if(!rewriting){
+      loopTop = rewpar
+    }
+    for(let p = 0; p < loopTop; p++){
+      blurLoop(p)
+      let line = ''
+      if(myarr[p].length > 0){
+        for(let w = 0; w < typePos[p]; w++){
+          if(arr[ll[p]].toLowerCase() == myarr[p][w].toLowerCase()){
+            if(typePos[p] < myarr[p].length){
+              typePos[p]++
+              ll[p] = Math.floor(Math.random() * arr.length)
+              //ll[p] = 0
+            }
+          }
+          if(myarr[p][w] == ' '){
+            line += '='
+          }else{
+            line += myarr[p][w]
           }
         }
-        if(myarr[p][w] == ' '){
-          line += '='
+        if(typePos[p] == myarr[p].length){
+          if(!rowDone[p]){
+            rowDone[p] = true
+            if(rewpar < myarr.length){
+              rewpar++
+            }
+          }
+          if(rewriten == exrewriten){
+            rewriten++
+          }
+          typed[p] = line
         }else{
-          line += myarr[p][w]
+          typed[p] = line + arr[ll[p]]
         }
-      }
-      if(typePos[p] == myarr[p].length){
-        typing = false
-        l++
-        if(rewriten == exrewriten){
-          rewriten++
+        ll[p]++
+        if(ll[p] >= arr.length){
+          ll[p] = 0
+        }
+
+      }else{
+        if(!rowDone[p]){
+          rowDone[p] = true
+          if(rewpar < myarr.length){
+            rewpar++
+          }
         }
         typed[p] = line
-      }else{
-        typed[p] = line + arr[ll[p]]
-      }
-      ll[p]++
-      if(ll[p] >= arr.length){
-        ll[p] = 0
       }
     }
+
+    l++
     doOutput(typed)
-    if(l < rewPeriod){
+    setBlur(bluring)
+    
+    if(!rewriting){
       aid = requestAnimationFrame(typeLoop)
     }else{
-      if(rewriten < (block.length + 1)){
-        eraseText()
+      if(l < rewPeriod){
+        aid = requestAnimationFrame(typeLoop)
       }else{
-        l = 0
-        quickTextSetup()
-      }
+        if(rewriten < (myarr.length + 1)){
+          eraseText()
+        }else{
+          l = 0
+          rollAllQuick()
+        }
+      }  
     }
   }
 
-
-  function revealText () {
+  function rollAllLoop () {
     l++
     rewTimer++
-    if(hovered){
-      hoverCount++
-    }
     let typed = []
     for(let b = 0; b < block.length; b++){
       if(block[b].length > 1 || block[b].length != undefined){
-        bluring.counter[b]++    
-        bluring.offset[b] = Math.floor(Math.random() * 5)
-
-        if(bluring.counter[b] == bluring.time[b]){
-          if(bluring.bool[b]){
-            bluring.time[b] = Math.floor(Math.random() * 20) + 3
-            bluring.counter[b] = 0
-            bluring.bool[b] = false
-          }else{
-            bluring.index[b]= Math.floor(Math.random() * block[b].length)
-            bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * (Math.floor(Math.random() * 20) + 4)))
-            bluring.counter[b] = 0
-            bluring.bool[b] = true
-          }
-        }
+        
+        blurLoop(b)
 
         if(l == pause){
           glitch[b] = true
@@ -450,43 +509,32 @@ const Box = (props) => {
 
     doOutput(typed)
     setBlur(bluring)
-    sethov(hoverCount)
 
     if(rewTimer == rewNext){
       if(props.rewrite == null || props.children == undefined){
         return
       }
       rewriten = 0
+      revealing = false
+      rewriting = true
       cancelAnimationFrame(aid)
       eraseText()
     }else{
       if(revealing){
-        aid = window.requestAnimationFrame(revealText);
+        aid = requestAnimationFrame(rollAllLoop);
       }else{
-        //window.cancelAnimationFrame(aid)
+        cancelAnimationFrame(aid)
       }
     }
   }
 
-  let hoverCount = 0
-  let hovered = false
-  // function hover () {
-  //   if(props.rewrite != undefined){
-  //     if(hoverCount == 0){
-  //       if(!hovered){
-  //         block = props.rewrite.split(/\r?\n/)
-  //         hovered = true
-  //         cancelAnimationFrame(aid)
-  //         hoverTextSetup()
-  //         hoverCount++
-  //       }
-  //     }
-  //   }
-  // }
-
   useEffect(() => {
     if(block != false){
-      revealTextSetup()
+      if(props.method == 'quicktype'){
+        typeText()
+      }else{
+        rollAll()
+      }
     }
     return () => {
       cancelAnimationFrame(aid)
@@ -512,15 +560,15 @@ const Box = (props) => {
             </span>
           :
             <p>
-              {line.map((word, j) => (
-                <span key={`word-${j}`}>
-                  {word.map((char, h) => (
-                    <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blur.index[index] == h) ? 'blur blurOffset-' + blur.offset[index] : ''}`}>
-                    {(char == '=') ? ' ' : char}
-                    </span>
-                  ))}
-                </span>
-              ))}
+            {line.map((word, j) => (
+              <span key={`word-${j}`}>
+                {word.map((char, h) => (
+                  <span key={`char-${h}`} data-text={(char == '=') ? ' ' : char} className={`${(char == '_') ? 'opacity-0' : '' } ${(glitchIndex[index] == h) ? 'glitch' : ''} ${(blur.index[index] == h) ? 'blur blurOffset-' + blur.offset[index] : ''}`}>
+                  {(char == '=') ? ' ' : char}
+                  </span>
+                ))}
+              </span>
+            ))}
             </p>
           }
         </Fragment>
@@ -533,14 +581,26 @@ const Reveal = (props) => {
   return (
     <LanguageConsumer>
       {({ lang }) => (
-        <Box lang={lang} rewrite={props.rewrite} rewrite={props.rewrite} introVal={props.introVal}>{props.children}</Box>
+        <Box 
+          method={props.method}
+          lang={lang} 
+          rewrite={props.rewrite} 
+          rewriteRandom={props.rewriteRandom} 
+          rewriteDelay={props.rewriteDelay} 
+          introVal={props.introVal}
+        >
+          {props.children}
+        </Box>
       )}
     </LanguageConsumer>
   )
 }
 
 Box.propTypes = {
+  method: PropTypes.string,
   rewrite: PropTypes.string,
+  rewriteRandom: PropTypes.string,
+  rewriteDelay: PropTypes.string,
   lang: PropTypes.string,
   introVal: PropTypes.number,
   children: PropTypes.oneOfType([
@@ -550,7 +610,10 @@ Box.propTypes = {
 }
 
 Reveal.propTypes = {
+  method: PropTypes.string,
   rewrite: PropTypes.string,
+  rewriteRandom: PropTypes.string,
+  rewriteDelay: PropTypes.string,
   introVal: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.node,

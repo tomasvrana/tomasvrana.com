@@ -12,6 +12,7 @@ const Container = styled.div`
 text-align:center;
 h1 {
   margin:0 0 1rem 0;
+  
   filter: blur(1px);
   animation: blur1 8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite;
   -webkit-animation: blur1 8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite;
@@ -172,21 +173,23 @@ const Item = (props) => {
           {({ navActive, updateNavActive }) => (
             <Container>
               {updateNavActive(props.content.parent)}
-              <Title large rewrite={(props.content.subtitle) && props.content.subtitle}>{props.content.title}</Title>
-              <small><Typing>{subline}</Typing></small>
-              {props.content.cooperation &&
-                <div className='cooperation'>
-                  <div><Reveal>{frontmatter.others.cooperation}</Reveal></div>
-                  <Reveal>{props.content.cooperation}</Reveal></div>
-              }
-              <div className='media'>
-                <Reveal>{props.content.media}</Reveal>
-                {props.content.width &&
-                  <span> ({props.content.width}&times;{props.content.height})</span>
+              <div className='top'>
+                <Title large rewrite={(props.content.subtitle) && props.content.subtitle}>{props.content.title}</Title>
+                <small><Typing>{subline}</Typing></small>
+                {props.content.cooperation &&
+                  <div className='cooperation'>
+                    <div><Reveal>{frontmatter.others.cooperation}</Reveal></div>
+                    <Reveal>{props.content.cooperation}</Reveal></div>
                 }
-              </div>
-              <div className='desc'>
-                <Reveal introVal={50}>{props.content.description}</Reveal>
+                <div className='media'>
+                  <Reveal>{props.content.media}</Reveal>
+                  {props.content.width &&
+                    <span> ({props.content.width}&times;{props.content.height})</span>
+                  }
+                </div>
+                <div className='desc'>
+                  <Reveal introVal={50} method='quicktype' delay={1000}>{props.content.description}</Reveal>
+                </div>
               </div>
               <div className='images'>
                 {props.content.images.map((item, index) => (
