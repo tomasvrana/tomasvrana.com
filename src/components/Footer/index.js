@@ -113,7 +113,7 @@ const Footer = (props) => {
                   </Fragment>
                 }
                 <div className='left'>
-                  <Reveal>2022</Reveal> &copy; <Reveal>{frontmatter.footer.left}</Reveal> <Link href='#'><GrGithub /></Link>
+                  <Reveal>2022</Reveal> &copy; <Reveal>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' target='_blank'><GrGithub /></Link>
                 </div>
                 <div className='right'>
                   <Reveal>{frontmatter.footer.rights}</Reveal>
