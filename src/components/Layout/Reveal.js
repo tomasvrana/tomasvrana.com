@@ -147,7 +147,7 @@ const Box = (props) => {
   function nextSetup () {
     revealing = true
     rewTimer = 0
-    rewNext = Math.floor(Math.random() * 2000) + 400
+    rewNext = Math.floor(Math.random() * 200) + 400
   }
 
   function rollAll () {
@@ -166,8 +166,8 @@ const Box = (props) => {
       for(let i = 0; i < myarr[b].length; i++){
         ll[b][i] = Math.floor(Math.random() * arr.length)
         starts[b][i] = 5
-        if(props.introVal){
-          starts[b][i] = Math.floor(Math.random() * props.introVal) + 10
+        if(props.delay){
+          starts[b][i] = props.delay
         }
         intro[b][i] = true
         rolling[b][i] = true
@@ -214,6 +214,7 @@ const Box = (props) => {
     bluring.bool[b] = false
     bluring.index[b]= Math.floor(Math.random() * myarr[b].length)
     bluring.time[b] = Math.floor(Math.random() * (((myarr[b].length < 100) ? (101 - myarr[b].length) : 1) * 10))
+    setBlur(bluring)
   }
 
   function blurLoop (b) {
@@ -247,23 +248,24 @@ const Box = (props) => {
     }
     setOut(res)
   }
-
+  
   function eraseText () {
+    revealing = false
     erased = false
     l = 0
-    let altblock = block
-    if(rewriting && rewriteblock[rewriten - 1] != undefined){
-      altblock = rewriteblock
-    }
-    if(altblock.length > 1){
+    let rewr = (rewriten == 0) ? 1 : rewriten
+    if(block.length > 1){
+      if(block[rewr - 1] == undefined){
+        console.log(block)
+      }
       for(let p = 0; p < 1; p++){
-        myarr[p] = altblock[rewriten - 1].split('')
-        rewIndex[p] = altblock[rewriten - 1].length
+        myarr[p] = block[rewr - 1].split('')
+        rewIndex[p] = block[rewr - 1].length
       }
     }else{
-      for(let p = 0; p < altblock.length; p++){
-        myarr[p] = altblock[p].split('')
-        rewIndex[p] = altblock[p].length
+      for(let p = 0; p < block.length; p++){
+        myarr[p] = block[p].split('')
+        rewIndex[p] = block[p].length
       }
     }
 
@@ -312,10 +314,10 @@ const Box = (props) => {
   function typeText () {
     myarr = []
     typePos = []
+    starts = 0
     l = 0
     revealing = false
     typing = true
-
     if(!block){
       block = props.children.split(/\r?\n/)
     }
@@ -326,7 +328,13 @@ const Box = (props) => {
       rowDone[p] = false
       ll[p] = 0
     }
-    typeLoop()
+    if(props.delay){
+      setTimeout(() => {
+        typeLoop()
+      }, props.delay * 20)
+    }else{
+      typeLoop()
+    }
   }
 
   function rewriteText () {
@@ -354,7 +362,6 @@ const Box = (props) => {
         ll[p] = 0
       }  
     }
-
     typeLoop()
   }
 
@@ -411,7 +418,6 @@ const Box = (props) => {
         typed[p] = line
       }
     }
-
     l++
     doOutput(typed)
     setBlur(bluring)
@@ -510,10 +516,7 @@ const Box = (props) => {
     doOutput(typed)
     setBlur(bluring)
 
-    if(rewTimer == rewNext){
-      if(props.rewrite == null || props.children == undefined){
-        return
-      }
+    if(rewTimer == rewNext && props.rewrite != undefined){
       rewriten = 0
       revealing = false
       rewriting = true
@@ -587,7 +590,7 @@ const Reveal = (props) => {
           rewrite={props.rewrite} 
           rewriteRandom={props.rewriteRandom} 
           rewriteDelay={props.rewriteDelay} 
-          introVal={props.introVal}
+          delay={props.delay}
         >
           {props.children}
         </Box>
@@ -602,7 +605,7 @@ Box.propTypes = {
   rewriteRandom: PropTypes.string,
   rewriteDelay: PropTypes.string,
   lang: PropTypes.string,
-  introVal: PropTypes.number,
+  delay: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
@@ -614,7 +617,7 @@ Reveal.propTypes = {
   rewrite: PropTypes.string,
   rewriteRandom: PropTypes.string,
   rewriteDelay: PropTypes.string,
-  introVal: PropTypes.number,
+  delay: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
