@@ -514,7 +514,7 @@ const Box = (props) => {
       if(props.rewrite == null || props.children == undefined){
         return
       }
-      rewriten = 0
+      rewriten = 1
       revealing = false
       rewriting = true
       cancelAnimationFrame(aid)

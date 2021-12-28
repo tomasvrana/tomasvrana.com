@@ -29,6 +29,12 @@ const Container = styled.footer`
   .left {
     text-align:left;
     float:left;
+    line-height:1;
+    .github{
+      font-size:150%;
+      line-height:.1;
+      vertical-align:middle;
+    }
   }
   .right {
     text-align:right;
@@ -71,6 +77,7 @@ const Container = styled.footer`
     .left {
       text-align:center;
       float:none;
+      
     }
     .right {
       text-align:center;
@@ -113,7 +120,7 @@ const Footer = (props) => {
                   </Fragment>
                 }
                 <div className='left'>
-                  <Reveal>2022</Reveal> &copy; <Reveal>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' target='_blank'><GrGithub /></Link>
+                  <Reveal>2022</Reveal> &copy; <Reveal>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' className='github' target='_blank'><GrGithub /></Link>
                 </div>
                 <div className='right'>
                   <Reveal>{frontmatter.footer.rights}</Reveal>
