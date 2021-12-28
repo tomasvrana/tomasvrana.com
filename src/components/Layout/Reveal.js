@@ -516,16 +516,11 @@ const Box = (props) => {
     doOutput(typed)
     setBlur(bluring)
 
-<<<<<<< HEAD
     if(rewTimer == rewNext){
       if(props.rewrite == null || props.children == undefined){
         return
       }
       rewriten = 1
-=======
-    if(rewTimer == rewNext && props.rewrite != undefined){
-      rewriten = 0
->>>>>>> main
       revealing = false
       rewriting = true
       cancelAnimationFrame(aid)
