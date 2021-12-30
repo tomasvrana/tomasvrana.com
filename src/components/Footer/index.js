@@ -12,6 +12,7 @@ import { GrGithub } from 'react-icons/gr'
 const Container = styled.footer`
   width: 100%;
   max-width: ${({ theme }) => theme.dimensions.contentWidth};
+  max-width:100vw;
   padding: 0 2rem;
   margin: 0 auto;
   display: block;
@@ -120,10 +121,10 @@ const Footer = (props) => {
                   </Fragment>
                 }
                 <div className='left'>
-                  <Reveal>2022</Reveal> &copy; <Reveal>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' className='github' target='_blank'><GrGithub /></Link>
+                  <Reveal delay={400}>2022</Reveal> &copy; <Reveal delay={350}>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' className='github' target='_blank'><GrGithub /></Link>
                 </div>
                 <div className='right'>
-                  <Reveal>{frontmatter.footer.rights}</Reveal>
+                  <Reveal delay={330}>{frontmatter.footer.rights}</Reveal>
                 </div>
               </Container>
             )}

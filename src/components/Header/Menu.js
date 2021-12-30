@@ -17,10 +17,7 @@ export default () => {
                   {frontmatter.header.navigation.map((item, index) => (
                     <li className={`item-${index}`} key={`menuli-${index}`}>
                       <Link activeClassName='active' className={(navActive == item.href) ? 'active' : ''} href={item.href} onClick={() => {(toggle) ? toggleMobileNav() : null}}>
-                        {(item.subtitle)
-                          ? <Reveal hover={item.subtitle}>{item.title}</Reveal>
-                          : <Reveal>{item.title}</Reveal>
-                        }
+                        <Reveal method='quicktype' delay={100 + (index * 30)} rewrite={(item.subtitle) && item.subtitle}>{item.title}</Reveal>
                       </Link>
                     </li>
                   ))}

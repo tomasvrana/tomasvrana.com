@@ -6,6 +6,7 @@ import Title from '../Layout/Title'
 import gflogo from '../../../resources/images/gf.svg'
 import { NavActiveConsumer } from '../../state'
 import Reveal from '../Layout/Reveal'
+import Appear from '../Layout/Appear'
 
 const Container = styled.div`
 @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -41,13 +42,13 @@ export default () => (
         {({ updateNavActive }) => (
           <Container>
             {updateNavActive(frontmatter.content.href)}
-            <Title rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
-            <Desc><Reveal method='quicktype'>{frontmatter.content.desc}</Reveal></Desc>
+            <Title delay={200} rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
+            <Desc><Reveal delay={250} method='quicktyping'>{frontmatter.content.desc}</Reveal></Desc>
             <br />
             <br />
-            <Desc><Reveal>{frontmatter.content.member}</Reveal></Desc>
-            <Logo><Link href="//gottfrei.com" target="_blank"><img src={gflogo} alt='' width='150' /></Link></Logo>
-            <Contact><Reveal method='quicktype'>{frontmatter.content.contact}</Reveal></Contact>
+            <Desc><Reveal delay={300}>{frontmatter.content.member}</Reveal></Desc>
+            <Appear delay={400}><Logo><Link href="//gottfrei.com" target="_blank"><img src={gflogo} alt='' width='150' /></Link></Logo></Appear>
+            <Contact><Reveal delay={350} method='rolltyping'>{frontmatter.content.contact}</Reveal></Contact>
           </Container>
         )}
       </NavActiveConsumer>
