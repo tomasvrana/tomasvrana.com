@@ -4,7 +4,7 @@ export default {
     primary: '#fefefe',
     primaryHighlight: '#0f4f0c',
     secondary: 'rgba(83, 87, 135, 0.95)',
-    interactive: 'rgb(31, 123, 135)',
+    interactive: '#222',
     interactiveHighlight: 'rgb(63, 124, 126)',
     text: '#000',
     secondaryText: '#afafaf',

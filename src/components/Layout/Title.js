@@ -35,13 +35,25 @@ const PageTitle = styled.h1`
 const Title = (props) => {
   return (
     <PageTitle className={`${(props.large) ? 'large' : ''}`}>
-      <Reveal rewrite={props.rewrite}>{props.children}</Reveal>
+      <Reveal
+        method={props.method}
+        rewrite={props.rewrite} 
+        rewriteRandom={props.rewriteRandom} 
+        rewriteDelay={props.rewriteDelay} 
+        delay={props.delay}
+      >
+        {props.children}
+      </Reveal>
     </PageTitle>
   )
 }
 
 Title.propTypes = {
+  method: PropTypes.string,
   rewrite: PropTypes.string,
+  rewriteRandom: PropTypes.string,
+  rewriteDelay: PropTypes.string,
+  delay: PropTypes.number,
   large: PropTypes.bool,
   children: PropTypes.node
 }

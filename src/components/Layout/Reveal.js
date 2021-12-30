@@ -140,6 +140,7 @@ const Box = (props) => {
   let rewriting = false
   let typePos = []
   let typing = false
+  let typingFast = false
 
   let arr = letters.split('')
   let myarr = []
@@ -339,7 +340,7 @@ const Box = (props) => {
 
   function rewriteText () {
     typePos = []
-    rewPeriod = Math.floor(Math.random() * 50) + 70
+    rewPeriod = Math.floor(Math.random() * 50) + 100
     myarr = []
     l = 0
     revealing = false
@@ -375,38 +376,66 @@ const Box = (props) => {
       blurLoop(p)
       let line = ''
       if(myarr[p].length > 0){
-        for(let w = 0; w < typePos[p]; w++){
-          if(arr[ll[p]].toLowerCase() == myarr[p][w].toLowerCase()){
-            if(typePos[p] < myarr[p].length){
-              typePos[p]++
-              ll[p] = Math.floor(Math.random() * arr.length)
-              //ll[p] = 0
+        if(typingFast){
+          for(let w = 0; w < typePos[p]; w++){
+            if(typePos[p] <= myarr[p].length){
+              if(myarr[p][w] == ' '){
+                line += '='
+              }else{
+                line += myarr[p][w]
+              }
             }
           }
-          if(myarr[p][w] == ' '){
-            line += '='
+          if(typePos[p] == myarr[p].length){
+            if(!rowDone[p]){
+              rowDone[p] = true
+              if(rewpar < myarr.length){
+                rewpar++
+              }
+            }
+            if(rewriten == exrewriten){
+              rewriten++
+            }
+            typed[p] = line
           }else{
-            line += myarr[p][w]
+            typePos[p]++
+            typed[p] = line
           }
-        }
-        if(typePos[p] == myarr[p].length){
-          if(!rowDone[p]){
-            rowDone[p] = true
-            if(rewpar < myarr.length){
-              rewpar++
+        }else{
+          for(let w = 0; w < typePos[p]; w++){
+            if(arr[ll[p]].toLowerCase() == myarr[p][w].toLowerCase()){
+              if(typePos[p] < myarr[p].length){
+                typePos[p]++
+                ll[p] = Math.floor(Math.random() * arr.length)
+                //ll[p] = 0
+              }
+            }
+            if(myarr[p][w] == ' '){
+              line += '='
+            }else{
+              line += myarr[p][w]
             }
           }
-          if(rewriten == exrewriten){
-            rewriten++
+          if(typePos[p] == myarr[p].length){
+            if(!rowDone[p]){
+              rowDone[p] = true
+              if(rewpar < myarr.length){
+                rewpar++
+              }
+            }
+            if(rewriten == exrewriten){
+              rewriten++
+            }
+            typed[p] = line
+          }else{
+            typed[p] = line + arr[ll[p]]
           }
-          typed[p] = line
-        }else{
-          typed[p] = line + arr[ll[p]]
+          ll[p]++
+          if(ll[p] >= arr.length){
+            ll[p] = 0
+          }  
         }
-        ll[p]++
-        if(ll[p] >= arr.length){
-          ll[p] = 0
-        }
+
 
       }else{
         if(!rowDone[p]){
@@ -520,7 +549,7 @@ const Box = (props) => {
       if(props.rewrite == null || props.children == undefined){
         return
       }
-      rewriten = 1
+      rewriten = 0
       revealing = false
       rewriting = true
       cancelAnimationFrame(aid)
@@ -536,7 +565,10 @@ const Box = (props) => {
 
   useEffect(() => {
     if(block != false){
-      if(props.method == 'quicktype'){
+      if(props.method == 'rolltyping'){
+        typeText()
+      }else if(props.method == 'quicktyping'){
+        typingFast = true
         typeText()
       }else{
         rollAll()

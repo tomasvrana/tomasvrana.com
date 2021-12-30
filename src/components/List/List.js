@@ -7,6 +7,7 @@ import { NavActiveConsumer } from '../../state'
 import { GrAttachment } from 'react-icons/gr'
 import GlobalQuery from '../Global/Query'
 import Reveal from '../Layout/Reveal'
+import Appear from '../Layout/Appear'
 
 const Ul = styled.ul`
   list-style-type:none;
@@ -106,15 +107,15 @@ const List = (props) => {
               {updateNavActive(props.href)}
               {props.children && props.children.map((item, index) => (
                 <li key={`listli-${index}`}>
-                  <h2><Link href={item.href}><Reveal>{item.title}</Reveal></Link></h2>
+                  <h2><Link href={item.href}><Reveal delay={(100 * index) + 100}>{item.title}</Reveal></Link></h2>
                   <div className='desc'>
                     {item.description}
                   </div>
                   <div className='img'>
                     <Link href={item.href} className='block'>
-                      <img src={item.image} alt={item.title} />
+                      <Appear delay={(100 * index) + 150}><img src={item.image} alt={item.title} /></Appear>
                       {item.count &&
-                        <Fragment>
+                        <Appear delay={(100 * index) + 180}>
                           {(item.count == 1) &&
                             <div className='count'><span className='num' title={`${item.count} ${frontmatter.others.image}`}><GrAttachment />&nbsp;{item.count}</span></div>
                           }
@@ -124,11 +125,11 @@ const List = (props) => {
                           {(item.count >= 5) &&
                             <div className='count'><span className='num' title={`${item.count} ${frontmatter.others.imagess}`}><GrAttachment />&nbsp;{item.count}</span></div>
                           }
-                        </Fragment>
+                        </Appear>
                       }
                     </Link>
                   </div>
-                  <Go title={frontmatter.others.more} href={item.href} />
+                  <Appear delay={(100 * index) + 200}><Go title={frontmatter.others.more} href={item.href} /></Appear>
                 </li>
               ))}
             </Ul>
