@@ -16,11 +16,17 @@ content:
       image: /images/maniac/1.jpg
       year: 2021
       count: 1
-    - title: Progress
-      href: /progress/
+    - title: Temptation
+      href: /temptation/
       description: ""
-      image: /images/progress/1.jpg
-      year: 2021
+      image: /images/temptation/1.jpg
+      year: 2022
+      count: 1
+    - title: Sinai
+      href: /sinai/
+      description: ""
+      image: /images/sinai/1.jpg
+      year: 2022
       count: 1
     - title: Nepu
       href: /nepu/

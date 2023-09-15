@@ -16,11 +16,17 @@ content:
       image: /images/maniac/1.jpg
       year: 2021
       count: 1
-    - title: Pokrok
-      href: /progress/
+    - title: Pokuseni
+      href: /temptation/
       description: ""
-      image: /images/progress/1.jpg
-      year: 2021
+      image: /images/temptation/1.jpg
+      year: 2022
+      count: 1
+    - title: Sinaj
+      href: /sinai/
+      description: ""
+      image: /images/sinai/1.jpg
+      year: 2022
       count: 1
     - title: Nepu
       href: /nepu/

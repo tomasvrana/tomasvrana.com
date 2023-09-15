@@ -182,11 +182,11 @@ const Item = (props) => {
                     <Reveal delay={300}>{props.content.cooperation}</Reveal></div>
                 }
                 <div className='media'>
-                  <Reveal delay={350}>{props.content.media}</Reveal>
-                  {props.content.width &&
-                    <span> ({props.content.width}&times;{props.content.height})</span>
-                  }
+                  <Reveal delay={350}>
+                    {props.content.media}
+                  </Reveal>
                 </div>
+
                 <div className='desc'>
                   <Reveal method='quicktyping' delay={400}>{props.content.description}</Reveal>
                 </div>
