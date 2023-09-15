@@ -11,7 +11,7 @@ import Footer from '../Footer'
 const Main = styled.main`
   position: relative;
   z-index: 1;
-  margin: 0 auto;
+  margin: 0 1.5rem;
   width: 100%;
   padding:8rem 0 ;
   opacity: 1;

@@ -19,7 +19,6 @@ const App = ({ element }) => (
                   <MobileNavToggleProvider>
                     <PageLoaderProvider>
                       <Fragment>
-                        <PickerContainer />
                         <LanguageConsumer>
                           {({ lang }) => (
                             <HeaderProvider lang={lang}>

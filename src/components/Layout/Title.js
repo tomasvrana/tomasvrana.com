@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Reveal from './Reveal'
 
 const PageTitle = styled.h1`
-  text-align:center;
+  text-align:left;
   margin:1em 0 2em 0;
   filter: blur(2px);
   text-transform:uppercase;

@@ -420,15 +420,6 @@ export default () => {
                           <Reveal rewrite={frontmatter.header.subtitle} delay={100}>{frontmatter.header.title}</Reveal>
                         </Link>
                       </div>
-                      <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
-                        <Menu />
-                      </MediaQuery>
-                      <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
-                        <button className={`mobile-nav-toggle ${(toggle) ? 'on' : 'off'} ${(navActive == '') ? 'home' : ''}`} onClick={() => toggleMobileNav()}><span className='bar bar-0'></span><span className='bar bar-1'></span><span className='bar bar-2'></span></button>
-                        <div className={`mobile-nav-pop ${(toggle) ? 'on' : 'off'} ${(navActive == '') ? 'home' : ''}`}>
-                          <Menu />
-                        </div>
-                      </MediaQuery>
                     </Container>
                   )}
                 </NavActiveConsumer>
