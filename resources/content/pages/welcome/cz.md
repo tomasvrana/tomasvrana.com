@@ -1,32 +1,25 @@
 ---
-title: En (English) home page content
+title: Cz (English) home page content
 content:
-  title: dsadsa
+  title: React Front-end development
+  subtitle: Lamp stack|Gatby
   href: /information/
   desc: |
-    TV se ve své tvorbě točí kolem experimentů s kontextem. Prolíná v sebe i protichůdné cesty a jako laborant testuje životnost i základních prvků, jako je oči nebo strop. No a pak se to nabarví. 
-    
-    Nepopiratelný je původ grafického designéra, ale i vliv mistrů jako David Hockney, Mark Rothko či Francis Bacon.
+    Hi. I'm Tom. I do front-end development using LAMP stack with React and Gatsby.
 
-    Všechny hodnoty velikostí, tedy rozměry, jsou uvedeny v centimetrech.
-        
   member: |
-    TV je členem výtvarného kolektivu galerie Gottfrei v Opavě.
+    TV is a member of an art collective of gallery Gottfrei.
     
   contact: "E-mail: tom@vrana.org"
   experience:
     title: Zkušenost
     items:
-      - title: shool
-        desc: fdsfds
-      - title: work
-        desc: fdsfds
+      - title: 
+        desc: 
   exhibitions:
     title: Výstavy
     items:
-      - title: shool
-        desc: fdsfds
-      - title: work
-        desc: fdsfds
+      - title: 
+        desc: 
   
 ---
