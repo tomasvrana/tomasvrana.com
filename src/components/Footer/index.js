@@ -120,12 +120,6 @@ const Footer = (props) => {
                     <LanguagePicker />
                   </Fragment>
                 }
-                <div className='left'>
-                  <Reveal delay={400}>2022</Reveal> &copy; <Reveal delay={350}>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' className='github' target='_blank'><GrGithub /></Link>
-                </div>
-                <div className='right'>
-                  <Reveal delay={330}>{frontmatter.footer.rights}</Reveal>
-                </div>
               </Container>
             )}
           />
