@@ -1,11 +1,11 @@
 ---
-title: En (English) home page content
+title: En (English) home page contenter
 content:
   title: Nepu
   parent: /images/
   back: Zpět
   type: Obraz
-  media: Akryl, plátno
+  media: Akryl, plátno 190x80
   year: 2015
   width: 190
   height: 80
