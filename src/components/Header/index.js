@@ -90,10 +90,10 @@ const Container = styled.header`
     position:relative;
     z-index:200;
     a {
-      font-size:3em;
+      font-size:10rem;
       line-height:1;
-      font-weight:800;
-      letter-spacing:.3rem;
+      font-weight:1000;
+      letter-spacing:.5rem;
       filter: blur(2px);
       animation: logoblur 8s ease 0s infinite;
       -webkit-animation: logoblur 8s ease 0s infinite;

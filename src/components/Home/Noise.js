@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { NavActiveConsumer } from '../../state'
-import Menu from '../Header/Menu'
 
 
 const Container = styled.div`
-
+position:fixed;
+top:0;
 @keyframes gradient {
   0% {
     background-position: 0% 100%;
@@ -31,44 +31,44 @@ const Container = styled.div`
     position:absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(-3deg, rgba(0,0,0,0) 20%, rgba(0,0,20,.3) 50%, rgba(0,0,0,0) 80%); 
+    background: linear-gradient(-3deg, rgba(0,0,0,0) 20%, rgba(0,0,20,.5) 50%, rgba(0,0,0,0) 80%); 
     animation: gradient 10s ease infinite;
     background-size: 200% 200%;
   }
 
   .bars {
     position:absolute;
-    opacity:.05;
+    opacity:.7;
     width: 100%;
     height: 100%;
     background: linear-gradient(91deg, 
-      #fff 0%, #fff 6%, #ff0 7%, #ff0 14%, #0ff 15%, #0ff 21%, #0f0 22%, #0f0 28%, #f0f 29%, #f0f 35%, #f00 36%, #f00 42%, #00f 43%, #00f 49%, 
-      #fff 50%, #fff 56%, #ff0 57%, #ff0 63%, #0ff 64%, #0ff 70%, #0f0 71%, #0f0 77%, #f0f 78%, #f0f 84%, #f00 85%, #f00 93%, #00f 94%, #00f 100%); 
-    animation: barsmove 7s linear infinite;
+      #0f0 0%, #0f0 6%, #f0f 7%, #f0f 14%, #0ff 15%, #0ff 21%, #0f0 22%, #0f0 28%, #f0f 29%, #f0f 35%, #f00 36%, #f00 42%, #00f 43%, #00f 49%, 
+      #0f0 50%, #0f0 56%, #f0f 57%, #f0f 63%, #0ff 64%, #0ff 70%, #0f0 71%, #0f0 77%, #f0f 78%, #f0f 84%, #f00 85%, #f00 93%, #00f 94%, #00f 100%); 
+    animation: barsmove 50s linear infinite;
     background-size: 215% 215%;
   }
   .bars.fast {
-    animation: barsmove 1s linear infinite;
+    animation: barsmove 25s linear infinite;
   }
   .bars.in {
-    opacity:.04;
+    opacity:.7;
   }
   .barsback {
     position:absolute;
-    opacity:.04;
+    opacity:.5;
     width: 100%;
     height: 100%;
     background: linear-gradient(-90deg, 
-      #fff 0%, #fff 6%, #ff0 7%, #ff0 14%, #0ff 15%, #0ff 21%, #0f0 22%, #0f0 28%, #f0f 29%, #f0f 35%, #f00 36%, #f00 42%, #00f 43%, #00f 49%, 
-      #fff 50%, #fff 56%, #ff0 57%, #ff0 63%, #0ff 64%, #0ff 70%, #0f0 71%, #0f0 77%, #f0f 78%, #f0f 84%, #f00 85%, #f00 93%, #00f 94%, #00f 100%); 
-    animation: barsmove 3s linear infinite;
+      #00f 7%, #00f 14%, #0ff 15%, #0ff 21%, #0f0 22%, #0f0 28%, #f0f 29%, #f0f 35%, #f00 36%, #f00 42%, #ff0 43%, #ff0 49%, 
+      #00f 57%, #00f 63%, #0ff 64%, #0ff 70%, #0f0 71%, #0f0 77%, #f0f 78%, #f0f 84%, #f00 85%, #f00 93%, #ff0 94%, #ff0 100%); 
+    animation: barsmove 40s linear infinite;
     background-size: 215% 215%;
   }
   .barsback.fast {
-    animation: barsmove .5s linear infinite;
+    animation: barsmove 20s linear infinite;
   }
   .barsback.in {
-    opacity:.1;
+    opacity:1;
   }
 
 
@@ -120,9 +120,6 @@ export default () => {
           buffer32 = new Uint32Array(iData.data.buffer),
           len = buffer32.length
       let i = 0
-
-    for(; i < len;)
-      buffer32[i++] = ((250 * Math.random())|180) << 24;
 
     ctx.putImageData(iData, 0, 0);
   }

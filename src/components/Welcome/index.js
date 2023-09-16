@@ -7,11 +7,17 @@ import gflogo from '../../../resources/images/gf.svg'
 import { NavActiveConsumer } from '../../state'
 import Reveal from '../Layout/Reveal'
 import Appear from '../Layout/Appear'
+import Noise from '../Home/Noise'
 
 const Container = styled.div`
-@media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
-padding:0 1em;
-}
+padding:10rem 1em 0 1em;
+color:white;
+position:relative;
+z-index:100;
+`
+
+const Wrap = styled.div`
+
 
 `
 
@@ -40,14 +46,16 @@ export default () => (
     render={({ frontmatter }) => (
       <NavActiveConsumer>
         {({ updateNavActive }) => (
-          <Container>
-            {updateNavActive(frontmatter.content.href)}
-            <Title delay={200} rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
-            <Desc><Reveal delay={250} method='quicktyping'>{frontmatter.content.desc}</Reveal></Desc>
-            <br />
-            <br />
-            <Contact><Reveal delay={350} method='rolltyping'>{frontmatter.content.contact}</Reveal></Contact>
-          </Container>
+          <Wrap>
+            <Noise />
+            <Container>
+              {updateNavActive(frontmatter.content.href)}
+              <Title delay={200} rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
+              <Desc><Reveal delay={250} method='quicktyping'>{frontmatter.content.desc}</Reveal></Desc>
+              <br />
+              <Contact><Reveal delay={350} method='rolltyping'>{frontmatter.content.contact}</Reveal></Contact>
+            </Container>
+          </Wrap>
         )}
       </NavActiveConsumer>
     )}

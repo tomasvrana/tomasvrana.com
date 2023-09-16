@@ -103,7 +103,6 @@ const Layout = ({ children, headData = null }) => (
         <LoadingMask pageLoading={loading}>
           {children}
         </LoadingMask>
-        <Footer home />
       </Fragment>
     )}
   </PageLoaderConsumer>
