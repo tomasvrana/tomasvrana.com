@@ -2,7 +2,7 @@
 # Netlify identifier
 title: En (English) home page meta data
 head:
-  title: TOMAS VRANA Website Front-end Developer
+  title: TOMAS VRANA WEBSITE FRONT-END DEVELOPER
   meta:
-    - { name: "description", content: "TOMAS VRANA Website Front-end Developer", file: "" }
+    - { name: "description", content: "TOMAS VRANA WEBSITE FRONT-END DEVELOPER", file: "" }
 ---
