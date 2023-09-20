@@ -114,12 +114,13 @@ const Footer = (props) => {
           <Query
             render={({ frontmatter }) => (
               <Container className={`${(props.home) ? 'home' : ''} ${(toggle) ? 'nav-toggled' : ''}`}>
-                {(props.home || toggle) &&
-                  <Fragment>
-                    <Menu />
-                    <LanguagePicker />
-                  </Fragment>
-                }
+                <div className='left'>
+                  <Reveal delay={350}>{frontmatter.footer.left}</Reveal> <Link href='https://github.com/tomasvrana/tomasvrana.com' className='github' target='_blank'><GrGithub /></Link> &nbsp; 
+                  <Reveal delay={400}>E-mail: tom@vrana.org</Reveal>
+                </div>
+                <div className='right'>
+                  <Reveal delay={330}>{frontmatter.footer.rights}</Reveal>
+                </div>
               </Container>
             )}
           />

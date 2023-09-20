@@ -22,8 +22,8 @@ others:
   back: Zpět
   more: Vidět více
 footer:
-  left: TOMAS VRANA, Vyrobeno v Gatsby
-  rights: All rights reserved
+  left: TOMAS VRANA, Made in Gatsby
+  rights: No rights reserved
   info: Information
   infolink: /information/
 

@@ -5,7 +5,7 @@ content:
   subtitle: Lamp stack|React|Gatby
   href: /information/
   desc: |
-    Hi. I'm Tom. I do website front-end development using LAMP stack with React and Gatsby.
+    Hi. I'm Tom. I do bullet-proof website front-end development using LAMP stack with React and Gatsby.
 
   member: |
     TV is a member of an art collective of gallery Gottfrei.
@@ -21,5 +21,10 @@ content:
     items:
       - title: 
         desc: 
-  
+    websites:
+    - title: iohk
+      url: //iohk.io
+    - title: Ernie
+      url: //ernie
+
 ---

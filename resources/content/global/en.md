@@ -20,7 +20,7 @@ others:
   more: See more
 footer:
   left: TOMAS VRANA, Made in Gatsby
-  rights: All rights reserved
+  rights: No rights reserved
   info: Information
   infolink: /information/
 

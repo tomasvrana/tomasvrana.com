@@ -34,7 +34,11 @@ const Query = ({ render }) => (
                           title
                           desc
                         }
-                      }  
+                      }
+                      websites {
+                        title
+                        url
+                      }
                     }
                   }
                 }
