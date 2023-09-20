@@ -60,16 +60,7 @@ export default () => (
               <Title delay={200} rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
               <Desc><Reveal delay={250} method='quicktyping'>{frontmatter.content.desc}</Reveal></Desc>
               <br />
-              <h4><Reveal>Some websites I did:</Reveal></h4>
-              <Websites>
-              {frontmatter.content.websites && frontmatter.content.websites.map((item, index) => (
-                <li>
-                  {item.url  &&
-                  <Link href={item.url} target="_blank"><Reveal>{item.title}</Reveal></Link>
-                  }
-                </li>
-              ))}
-              </Websites>
+
             </Container>
           </Wrap>
         )}
