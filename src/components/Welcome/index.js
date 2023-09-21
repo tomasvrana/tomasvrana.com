@@ -39,12 +39,19 @@ const Logo = styled.div`
 padding:1em 0 2em 0;
 
 `
-const Websites = styled.ul`
-padding:0;
+const Websites = styled.div`
 font-size:85%;
+ul {
+  list-style-type:none;
+  padding:0;
+}
 li {
   list-style-type:none
+} 
+@media (max-width: 768px) {
+  display:none
 }
+
 `
 
 
@@ -60,12 +67,12 @@ export default () => (
               <Title delay={200} rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
               <Desc><Reveal delay={250} method='quicktyping'>{frontmatter.content.desc}</Reveal></Desc>
               <br />
-              <h4><Reveal>Some websites I did:</Reveal></h4>
               <Websites>
+              <h4><Reveal delay={350} method='quicktyping'>Some websites I did:</Reveal></h4>
               {frontmatter.content.websites && frontmatter.content.websites.map((item, index) => (
                 <li>
                   {item.url  &&
-                  <Link href={item.url} target="_blank"><Reveal>{item.title}</Reveal></Link>
+                  <Link href={item.url} target="_blank"><Reveal delay={400} method='quicktyping'>{item.title}</Reveal></Link>
                   }
                 </li>
               ))}

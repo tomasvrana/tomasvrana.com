@@ -76,17 +76,15 @@ const Container = styled.footer`
 
   @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
     .left {
-      text-align:center;
+      text-align:left;
       float:none;
       
     }
     .right {
-      text-align:center;
-    }
-    .lang-picker{
+      text-align:left;
       display:block;
-      text-align:center;
-    }  
+    }
+ 
     &.home, &.nav-toggled {
       .menu {
         display:block;

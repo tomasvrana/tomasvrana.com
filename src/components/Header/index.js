@@ -91,6 +91,9 @@ const Container = styled.header`
     z-index:200;
     a {
       font-size:10rem;
+      @media screen and (max-width: 768px) {
+        font-size:6rem;
+      }
       line-height:1;
       font-weight:1000;
       letter-spacing:.5rem;

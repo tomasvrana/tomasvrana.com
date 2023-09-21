@@ -1,8 +1,8 @@
 ---
 title: Cz (English) home page content
 content:
-  title: Website Front-end development
-  subtitle: Lamp stack|React|Gatby
+  title: Websites
+  subtitle:  Front-end|development|Lamp stack|React|Gatby
   href: /information/
   desc: |
     Hi. I'm Tom. I do bullet-proof website front-end development using LAMP stack with React and Gatsby or WordPress.
