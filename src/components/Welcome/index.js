@@ -77,7 +77,7 @@ export default () => (
               {frontmatter.content.websites && frontmatter.content.websites.map((item, index) => (
                 <li>
                   {item.url  &&
-                  <Link href={item.url} target="_blank"><Reveal delay={(index*10+380)} method='quicktyping'>{item.title}</Reveal></Link>
+                  <Link href={item.url} target="_blank"><Reveal delay={400} method='quicktyping'>{item.title}</Reveal></Link>
                   }
                 </li>
               ))}
