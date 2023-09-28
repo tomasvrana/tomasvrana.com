@@ -21,10 +21,17 @@ content:
     items:
       - title: 
         desc: 
-    websites:
-    - title: iohk
-      url: //iohk.io
-    - title: Ernie
-      url: //ernie
+  websites:
+    - title: iohk.io
+      url: https://iohk.io
+    - title: ernieels.com
+      url: https://ernieels.com
+    - title: sgt.tejnorova.com
+      url: https://sgt.tejnorova.com/
+    - title: sakarilerkkanen.com
+      url: https://sakarilerkkanen.com
+    - title: lucielerkkanen.com
+      url: https://lucielerkkanen.com
+
 
 ---
