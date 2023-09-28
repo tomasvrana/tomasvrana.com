@@ -71,23 +71,7 @@ export default () => (
               {updateNavActive(frontmatter.content.href)}
               <Title delay={200} rewrite={frontmatter.content.subtitle}>{frontmatter.content.title}</Title>
               <Desc><Reveal delay={250} method='quicktyping'>{frontmatter.content.desc}</Reveal></Desc>
-              <br />
-              <Websites>
-              <h4><Reveal delay={350} method='quicktyping'>Some websites I did:</Reveal></h4>
-              {frontmatter.content.websites && frontmatter.content.websites.map((item, index) => (
-                <li>
-                  {item.url  &&
-                  <Link href={item.url} target="_blank"><Reveal delay={400} method='quicktyping'>{item.title}</Reveal></Link>
-                  }
-                </li>
-              ))}
-              </Websites>
-              <Portfolio>
-                <h4>
-                  <Reveal delay={450} method='quicktyping'>Some graphic works I did</Reveal> 
-                  <Link href="https://tomasvrana.com/pdf/Tomas-Vrana-Graphic-Portfolio.pdf" target="_blank"><Reveal delay={470} method='quicktyping'>&nbsp;here</Reveal></Link>
-                </h4>
-              </Portfolio>
+
             </Container>
           </Wrap>
         )}
