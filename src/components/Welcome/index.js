@@ -8,6 +8,7 @@ import { NavActiveConsumer } from '../../state'
 import Reveal from '../Layout/Reveal'
 import Appear from '../Layout/Appear'
 import Noise from '../Home/Noise'
+import { GrGithub, GrDocumentPdf } from 'react-icons/gr'
 
 const Container = styled.div`
 padding:10rem 1em 0 1em;
@@ -53,6 +54,10 @@ li {
 }
 
 `
+const Portfolio = styled.div`
+font-size:85%;
+
+`
 
 
 export default () => (
@@ -72,11 +77,17 @@ export default () => (
               {frontmatter.content.websites && frontmatter.content.websites.map((item, index) => (
                 <li>
                   {item.url  &&
-                  <Link href={item.url} target="_blank"><Reveal delay={400} method='quicktyping'>{item.title}</Reveal></Link>
+                  <Link href={item.url} target="_blank"><Reveal delay={(index*10+380)} method='quicktyping'>{item.title}</Reveal></Link>
                   }
                 </li>
               ))}
               </Websites>
+              <Portfolio>
+                <h4>
+                  <Reveal delay={450} method='quicktyping'>Some graphic works I did</Reveal> 
+                  <Link href="https://tomasvrana.com/pdf/Tomas-Vrana-Graphic-Portfolio.pdf" target="_blank"><Reveal delay={470} method='quicktyping'>&nbsp;here</Reveal></Link>
+                </h4>
+              </Portfolio>
             </Container>
           </Wrap>
         )}

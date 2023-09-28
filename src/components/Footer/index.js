@@ -7,7 +7,7 @@ import Query from '../Global/Query'
 import Link from '../Link'
 import Reveal from '../Layout/Reveal'
 import LanguagePicker from '../PickerContainer/LanguagePicker'
-import { GrGithub } from 'react-icons/gr'
+import { GrGithub, GrDocumentPdf } from 'react-icons/gr'
 
 const Container = styled.footer`
   width: 100%;
